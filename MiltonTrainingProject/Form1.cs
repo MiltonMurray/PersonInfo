@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace MiltonTrainingProject
 {
-    public partial class Person : Form
+    public partial class Form1 : Form
     {
         DataBaseConnection objConnect;
         string conString;
@@ -25,14 +25,15 @@ namespace MiltonTrainingProject
         string gender;
         Form2 a = new Form2();
 
-        public Person()
+        public Form1()
         {
             InitializeComponent();
 
             try
             {
+                
                 objConnect = new DataBaseConnection();
-                conString = Properties.Settings.Default.PersonConnectionString;
+                conString = Properties.Settings.Default.ConnectionString;
 
                 objConnect.connection_string = conString; //pass over the connection string to our DatabaseConnection class
                 objConnect.Sql = Properties.Settings.Default.SQL; //passed to our DatabaseConnection class via the Sql property before the equal sign
@@ -40,7 +41,7 @@ namespace MiltonTrainingProject
                 ds = objConnect.GetConnection;
                 MaxRows = ds.Tables[0].Rows.Count;
 
-             
+
 
             }
             catch (Exception err)
@@ -49,22 +50,14 @@ namespace MiltonTrainingProject
             }
         }
 
-        private void rbMale_CheckedChanged(object sender, EventArgs e)
-        {
-            gender = "Male";
-        }
-
-        private void rbFemale_CheckedChanged(object sender, EventArgs e)
-        {
-            gender = "Female";
-        }
+      
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             DataRow row = ds.Tables[0].NewRow();
-            row[1] = txtFname.Text;
-            row[2] = txtlname.Text;
-            row[3] = dtPicker.Text;
+            row[1] = txtFirstName.Text;
+            row[2] = txtLastName.Text;
+            row[3] = DOBPicker.Text;
             row[4] = txtSSN.Text;
             row[5] = gender;
             row[6] = cbMaritalStatus.Text;
@@ -86,6 +79,15 @@ namespace MiltonTrainingProject
             {
                 MessageBox.Show(err.Message);
             }
+        }
+
+        private void rbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            gender = "Male";
+        }
+        private void rbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            gender = "Female";
         }
     }
 }

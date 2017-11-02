@@ -43,8 +43,8 @@
             this.mM_PersonTableAdapter = new MiltonTrainingProject.Data.INTERN_TESTDataSetTableAdapters.MM_PersonTableAdapter();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mMPersonBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iNTERNTESTDataSetBindingSource)).BeginInit();
@@ -54,6 +54,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -152,18 +153,18 @@
             this.addToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.addToolStripMenuItem.Text = "Add";
             // 
-            // filterToolStripMenuItem
-            // 
-            this.filterToolStripMenuItem.Name = "filterToolStripMenuItem";
-            this.filterToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.filterToolStripMenuItem.Text = "Filter";
-            // 
             // mnuNew
             // 
             this.mnuNew.Name = "mnuNew";
             this.mnuNew.Size = new System.Drawing.Size(152, 22);
             this.mnuNew.Text = "New";
             this.mnuNew.Click += new System.EventHandler(this.mnuNew_Click);
+            // 
+            // filterToolStripMenuItem
+            // 
+            this.filterToolStripMenuItem.Name = "filterToolStripMenuItem";
+            this.filterToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.filterToolStripMenuItem.Text = "Filter";
             // 
             // Form2
             // 

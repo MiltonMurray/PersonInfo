@@ -20,7 +20,7 @@ namespace MiltonTrainingProject
              try
             {
                 objConnect = new DataBaseConnection();
-                conString = Properties.Settings.Default.ConnectionString;
+                conString = Properties.Settings.Default.PersonConnectionString;
 
                 objConnect.connection_string = conString; //pass over the connection string to our DatabaseConnection class
                 objConnect.Sql = Properties.Settings.Default.SQL; //passed to our DatabaseConnection class via the Sql property before the equal sign
@@ -34,7 +34,7 @@ namespace MiltonTrainingProject
                 MessageBox.Show(err.Message);
             }
         }
-
+        
         DataBaseConnection objConnect;
         string conString;
 
@@ -43,6 +43,7 @@ namespace MiltonTrainingProject
         int MaxRows;
         int inc = 0;
 
+        
        
         public DataGridView mainGrid
         {
@@ -57,11 +58,6 @@ namespace MiltonTrainingProject
          
         }
 
-        private void btnAddNew_Click(object sender, EventArgs e)
-        {
-            //pForm.ShowDialog();
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -69,7 +65,8 @@ namespace MiltonTrainingProject
 
         private void mnuNew_Click(object sender, EventArgs e)
         {
-            
+            Form1 frm = new Form1();
+            frm.Show();
         }
     }
 }
