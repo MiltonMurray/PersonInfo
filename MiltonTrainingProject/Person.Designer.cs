@@ -44,7 +44,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbMaritalStatus = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -163,6 +163,7 @@
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "SAVE";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label6
             // 
@@ -178,23 +179,23 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // comboBox1
+            // cbMaritalStatus
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbMaritalStatus.FormattingEnabled = true;
+            this.cbMaritalStatus.Items.AddRange(new object[] {
             "Married",
             "Single"});
-            this.comboBox1.Location = new System.Drawing.Point(268, 65);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(102, 21);
-            this.comboBox1.TabIndex = 17;
+            this.cbMaritalStatus.Location = new System.Drawing.Point(268, 65);
+            this.cbMaritalStatus.Name = "cbMaritalStatus";
+            this.cbMaritalStatus.Size = new System.Drawing.Size(102, 21);
+            this.cbMaritalStatus.TabIndex = 17;
             // 
             // Person
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(401, 192);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbMaritalStatus);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
@@ -233,6 +234,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbMaritalStatus;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiltonTrainingProject.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,19 +13,79 @@ namespace MiltonTrainingProject
 {
     public partial class Person : Form
     {
+        DataBaseConnection objConnect;
+        string conString;
+
+        DataSet ds;
+        DataRow dRow;
+
+        int MaxRows;
+        int inc = 0;
+
+        string gender;
+        Form2 a = new Form2();
+
         public Person()
         {
             InitializeComponent();
+
+            try
+            {
+                objConnect = new DataBaseConnection();
+                conString = Properties.Settings.Default.PersonConnectionString;
+
+                objConnect.connection_string = conString; //pass over the connection string to our DatabaseConnection class
+                objConnect.Sql = Properties.Settings.Default.SQL; //passed to our DatabaseConnection class via the Sql property before the equal sign
+
+                ds = objConnect.GetConnection;
+                MaxRows = ds.Tables[0].Rows.Count;
+
+             
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
 
         private void rbMale_CheckedChanged(object sender, EventArgs e)
         {
-
+            gender = "Male";
         }
 
         private void rbFemale_CheckedChanged(object sender, EventArgs e)
         {
+            gender = "Female";
+        }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            DataRow row = ds.Tables[0].NewRow();
+            row[1] = txtFname.Text;
+            row[2] = txtlname.Text;
+            row[3] = dtPicker.Text;
+            row[4] = txtSSN.Text;
+            row[5] = gender;
+            row[6] = cbMaritalStatus.Text;
+
+            ds.Tables[0].Rows.Add(row);
+
+            try
+            {
+                objConnect.UpdateDatabase(ds);
+
+                MaxRows = MaxRows + 1;
+                inc = MaxRows - 1;
+
+                a.mainGrid.Refresh();
+
+                MessageBox.Show("Database updated");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
     }
 }
