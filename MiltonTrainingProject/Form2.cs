@@ -22,7 +22,7 @@ namespace MiltonTrainingProject
         int MaxRows;
         int inc = 0;
 
-        Form1 pForm = new Form1();
+        Person pForm = new Person();
 
         public Form2()
         {
@@ -66,12 +66,17 @@ namespace MiltonTrainingProject
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            pForm.ShowDialog();
+            //pForm.ShowDialog();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void mnuNew_Click(object sender, EventArgs e)
+        {
+            pForm.ShowDialog();
         }
     }
 }

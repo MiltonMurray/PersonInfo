@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace MiltonTrainingProject.Actions
 {
-    public class PersonActions : IPersonInterface<Person>
+    public class PersonActions : IPersonInterface<Model.Person>
     {
-        int IPersonInterface<Person>.Add(Person add)
+        int IPersonInterface<Model.Person>.Add(Model.Person add)
         {
             throw new NotImplementedException();
         }
 
-        void IPersonInterface<Person>.Delete(int id)
+        void IPersonInterface<Model.Person>.Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        void IPersonInterface<Person>.Update(Person update)
+        void IPersonInterface<Model.Person>.Update(Model.Person update)
         {
             throw new NotImplementedException();
         }
