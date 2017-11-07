@@ -8,86 +8,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MiltonTrainingProject.Model;
+using System.Data.SqlClient;
 
 namespace MiltonTrainingProject
 {
     public partial class Form1 : Form
-    {
-        DataBaseConnection objConnect;
-        string conString;
-
-        DataSet ds;
-        DataRow dRow;
-
-        int MaxRows;
-        int inc = 0;
-
-        string gender;
-        Form2 a = new Form2();
+    {     
+       
+        public Person person { get; set; } 
 
         public Form1()
         {
             InitializeComponent();
 
-            try
-            {
-                
-                objConnect = new DataBaseConnection();
-                conString = Properties.Settings.Default.ConnectionString;
-
-                objConnect.connection_string = conString; //pass over the connection string to our DatabaseConnection class
-                objConnect.Sql = Properties.Settings.Default.SQL; //passed to our DatabaseConnection class via the Sql property before the equal sign
-
-                ds = objConnect.GetConnection;
-                MaxRows = ds.Tables[0].Rows.Count;
-
-
-
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
         }
 
       
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            string cs = "Data Source = sql_dev; Initial Catalog = INTERN_TEST; Integrated Security = True";
+
+            SqlConnection cn = new SqlConnection(cs);
+            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM MM_PERSON", cn);
+            SqlCommandBuilder cmb = new SqlCommandBuilder(ad);
+            DataSet ds = new DataSet();
+            ad.Fill(ds, "MM_Person");
+
             DataRow row = ds.Tables[0].NewRow();
             row[1] = txtFirstName.Text;
             row[2] = txtLastName.Text;
-            row[3] = DOBPicker.Text;
+            row[3] = DateTime.Parse(DOBPicker.Text);
             row[4] = txtSSN.Text;
-            row[5] = gender;
+            row[5] = cbGender.Text;
             row[6] = cbMaritalStatus.Text;
 
             ds.Tables[0].Rows.Add(row);
-
-            try
-            {
-                objConnect.UpdateDatabase(ds);
-
-                MaxRows = MaxRows + 1;
-                inc = MaxRows - 1;
-
-                a.mainGrid.Refresh();
-
-                MessageBox.Show("Database updated");
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
+            ad.Update(ds.Tables[0]);
+            MessageBox.Show("Record Added.", this.Text);
         }
 
-        private void rbMale_CheckedChanged(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
-            gender = "Male";
-        }
-        private void rbFemale_CheckedChanged(object sender, EventArgs e)
-        {
-            gender = "Female";
+
         }
     }
 }
