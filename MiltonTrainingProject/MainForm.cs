@@ -8,27 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using MiltonTrainingProject.Data;
 
 namespace MiltonTrainingProject
 {
     public partial class MainForm : Form
     {
+        int mouseover;
+        DataGridView currentGV;
+        DataBaseConnection connect;
+        DataSet ds;
+
         public MainForm()
         {
             InitializeComponent();
         }
-        int mouseover;
-        DataGridView currentGV;
+        
         private void MainForm_Load(object sender, EventArgs e)
         {
-           
-            string cs = "Data Source = sql_dev; Initial Catalog = INTERN_TEST; Integrated Security = True";
-
-            SqlConnection cn = new SqlConnection(cs);
-            SqlDataAdapter ad = new SqlDataAdapter("SELECT fname, lname, ssn, dob, gender, mstat FROM MM_PERSON", cn);
-            SqlCommandBuilder cmb = new SqlCommandBuilder(ad);
-            DataSet ds = new DataSet();
-            ad.Fill(ds, "MM_Person");
+            connect = new DataBaseConnection();
+            ds = connect.GetConnection;
             dataGridView1.DataSource = ds.Tables[0];
 
         }
@@ -51,6 +50,11 @@ namespace MiltonTrainingProject
             {
                 MessageBox.Show(ex.Message);
             }
+            
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             
         }
     }
