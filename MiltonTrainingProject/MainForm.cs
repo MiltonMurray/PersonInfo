@@ -17,12 +17,41 @@ namespace MiltonTrainingProject
         {
             InitializeComponent();
         }
-
+        int mouseover;
+        DataGridView currentGV;
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'iNTERN_TESTDataSet.MM_Person' table. You can move, or remove it, as needed.
-            this.mM_PersonTableAdapter.Fill(this.iNTERN_TESTDataSet.MM_Person);
+           
+            string cs = "Data Source = sql_dev; Initial Catalog = INTERN_TEST; Integrated Security = True";
 
+            SqlConnection cn = new SqlConnection(cs);
+            SqlDataAdapter ad = new SqlDataAdapter("SELECT fname, lname, ssn, dob, gender, mstat FROM MM_PERSON", cn);
+            SqlCommandBuilder cmb = new SqlCommandBuilder(ad);
+            DataSet ds = new DataSet();
+            ad.Fill(ds, "MM_Person");
+            dataGridView1.DataSource = ds.Tables[0];
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int id = (int)currentGV.Rows[mouseover].Tag;
+                            if (currentGV == dataGridView1)
+                            {
+                                MessageBox.Show("Mouseover Click Works");
+                            }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

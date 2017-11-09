@@ -12,15 +12,15 @@ namespace MiltonTrainingProject.Data
     {
         private string sql_string; //will hold a SQL string like "SELECT * FROM table" from the Settings
         private string strCon; //holds a location of the database
-        SqlDataAdapter da_1; //opens up a table in a database
+        SqlDataAdapter adapter; //opens up a table in a database
 
         public string Sql   //public access for variables
         {
-            set { sql_string = value; }
+            set { sql_string = "SELECT fname, lname, ssn, dob, gender, mstat FROM MM_PERSON"; }
         }
         public string connection_string
         {
-            set { strCon = value; }
+            set { strCon = "Data Source = sql_dev; Initial Catalog = INTERN_TEST; Integrated Security = True"; }
         }
 
         /**
@@ -38,18 +38,18 @@ namespace MiltonTrainingProject.Data
             SqlConnection con = new SqlConnection(strCon);
             con.Open();
 
-            da_1 = new SqlDataAdapter(sql_string, con); //grabs wanted data
+            adapter = new SqlDataAdapter(sql_string, con); //grabs wanted data
 
-            DataSet dat_set = new DataSet();
-            da_1.Fill(dat_set, "Table_Data_1");
+            DataSet dataSet = new DataSet();
+            adapter.Fill(dataSet, "Table_Data_1");
             con.Close();
 
-            return dat_set;
+            return dataSet;
         }
 
         public void UpdateDatabase(DataSet ds)
         {
-            SqlCommandBuilder cb = new SqlCommandBuilder(da_1);
+            SqlCommandBuilder cb = new SqlCommandBuilder(adapter);
             cb.DataAdapter.Update(ds.Tables[0]);
         }
     }
