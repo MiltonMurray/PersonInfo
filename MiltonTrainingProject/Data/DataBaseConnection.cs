@@ -25,7 +25,7 @@ namespace MiltonTrainingProject.Data
             string cs = "Data Source = sql_dev; Initial Catalog = INTERN_TEST; Integrated Security = True";
 
             SqlConnection cn = new SqlConnection(cs);
-            SqlDataAdapter ad = new SqlDataAdapter("SELECT fname, lname, ssn, dob, gender, mstat FROM MM_PERSON", cn);
+            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM MM_PERSON", cn);
             SqlCommandBuilder cmb = new SqlCommandBuilder(ad);
             DataSet ds = new DataSet();
             ad.Fill(ds, "MM_Person");

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.cbMaritalStatus = new System.Windows.Forms.ComboBox();
-            this.DOBPicker = new System.Windows.Forms.DateTimePicker();
             this.txtSSN = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
@@ -37,6 +36,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.cbGender = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dPicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,15 +51,6 @@
             this.cbMaritalStatus.Size = new System.Drawing.Size(100, 21);
             this.cbMaritalStatus.TabIndex = 8;
             this.cbMaritalStatus.Text = "Marital Status";
-            // 
-            // DOBPicker
-            // 
-            this.DOBPicker.CustomFormat = "dd-MM-yyyy";
-            this.DOBPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DOBPicker.Location = new System.Drawing.Point(147, 58);
-            this.DOBPicker.Name = "DOBPicker";
-            this.DOBPicker.Size = new System.Drawing.Size(100, 20);
-            this.DOBPicker.TabIndex = 9;
             // 
             // txtSSN
             // 
@@ -118,11 +109,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dPicker);
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.cbGender);
             this.groupBox1.Controls.Add(this.cbMaritalStatus);
             this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Controls.Add(this.DOBPicker);
             this.groupBox1.Controls.Add(this.txtSSN);
             this.groupBox1.Controls.Add(this.txtLastName);
             this.groupBox1.Controls.Add(this.txtFirstName);
@@ -133,6 +124,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // dPicker
+            // 
+            this.dPicker.CustomFormat = "MM/dd/yy";
+            this.dPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dPicker.Location = new System.Drawing.Point(147, 58);
+            this.dPicker.Name = "dPicker";
+            this.dPicker.Size = new System.Drawing.Size(100, 20);
+            this.dPicker.TabIndex = 17;
             // 
             // Form1
             // 
@@ -150,7 +150,6 @@
 
         #endregion
         private System.Windows.Forms.ComboBox cbMaritalStatus;
-        private System.Windows.Forms.DateTimePicker DOBPicker;
         private System.Windows.Forms.TextBox txtSSN;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtLastName;
@@ -158,5 +157,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ComboBox cbGender;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker dPicker;
     }
 }
