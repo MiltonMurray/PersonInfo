@@ -14,49 +14,55 @@ using System.Data.SqlClient;
 namespace MiltonTrainingProject
 {
     public partial class Form1 : Form
-    {     
-       
-        public Person person { get; set; } 
+    {
+        private string cs = "Data Source = sql_dev; Initial Catalog = INTERN_TEST; Integrated Security = True";
+        public Person person { get; set; }
+        SqlCommand cmd;
+        SqlConnection cn;
 
         public Form1()
         {
             InitializeComponent();
 
+            cn = new SqlConnection(cs);
+            cmd = new SqlCommand();
+            cmd.Connection = cn;
+            cmd.CommandType = CommandType.Text;
         }
 
-      
+        private void Form1_load(object sender, EventArgs e)
+        {
+            
+
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
-        {
-            string cs = "Data Source = sql_dev; Initial Catalog = INTERN_TEST; Integrated Security = True";
-
-            SqlConnection cn = new SqlConnection(cs);
-            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM MM_PERSON", cn);
-            SqlCommandBuilder cmb = new SqlCommandBuilder(ad);
-            DataSet ds = new DataSet();
-            ad.Fill(ds, "MM_Person");
-                   MessageBox.Show(dPicker.Text);
-            try
-            {
-                DateTime dt = Convert.ToDateTime(dPicker.Text);
-                DataRow row = ds.Tables[0].NewRow();
-                row[1] = txtFirstName.Text;
-                row[2] = txtLastName.Text;
-                
-                        row[3] = dt;
-                        row[4] = Int32.Parse(txtSSN.Text);
-                        row[5] = cbGender.Text;
-                        row[6] = cbMaritalStatus.Text;
-
-                        ds.Tables[0].Rows.Add(row);
-                        ad.Update(ds.Tables[0]);
-
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+        {           
             
-            
+            string fname = txtFirstName.Text;
+            string lname = txtLastName.Text;
+            DateTime dob = Convert.ToDateTime(dPicker.Text);
+            int ssn = Int32.Parse(txtSSN.Text);
+            string gender = cbGender.Text;
+            string mstat = cbMaritalStatus.Text;
+
+            cmd.Parameters.Clear();
+            cmd.CommandText = "INSERT INTO MM_Person values (@fname, @lname, @dob, @ssn, @gender, @mstat)";
+            cmd.Parameters.AddWithValue("@fname", fname);
+            cmd.Parameters.AddWithValue("@lname", lname);
+            cmd.Parameters.AddWithValue("@dob", dob);
+            cmd.Parameters.AddWithValue("@ssn", ssn);
+            cmd.Parameters.AddWithValue("@gender", gender);
+            cmd.Parameters.AddWithValue("@mstat", mstat);
+
+            if (cn.State == ConnectionState.Closed) cn.Open();
+
+            cmd.ExecuteNonQuery();
+            cn.Close();
+
+            MessageBox.Show("Successfully added");
+
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
