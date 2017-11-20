@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiltonTrainingProject", "MiltonTrainingProject\MiltonTrainingProject.csproj", "{5EA9CB87-40D5-446D-B7B3-7372BDF5F708}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "Data\DataAccess.csproj", "{D9914C8E-9FB0-47DB-BC80-C92F7EBE8E76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PServices", "Person\PServices.csproj", "{12EE7EF1-1E84-4D1E-894D-CB77B90D9F27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{5EA9CB87-40D5-446D-B7B3-7372BDF5F708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EA9CB87-40D5-446D-B7B3-7372BDF5F708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EA9CB87-40D5-446D-B7B3-7372BDF5F708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9914C8E-9FB0-47DB-BC80-C92F7EBE8E76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9914C8E-9FB0-47DB-BC80-C92F7EBE8E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9914C8E-9FB0-47DB-BC80-C92F7EBE8E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9914C8E-9FB0-47DB-BC80-C92F7EBE8E76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12EE7EF1-1E84-4D1E-894D-CB77B90D9F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12EE7EF1-1E84-4D1E-894D-CB77B90D9F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12EE7EF1-1E84-4D1E-894D-CB77B90D9F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12EE7EF1-1E84-4D1E-894D-CB77B90D9F27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

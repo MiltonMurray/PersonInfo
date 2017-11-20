@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MiltonTrainingProject.Model;
-using MiltonTrainingProject.Data;
-using MiltonTrainingProject.Actions;
 using System.Data;
 
 namespace MiltonTrainingProject.Model

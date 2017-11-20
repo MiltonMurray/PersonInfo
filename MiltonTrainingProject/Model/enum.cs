@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MiltonTrainingProject.Model
 {
-    public enum Gender { Male, Female}
+    public enum Gender { Male, Female, Other,  nonConforming, Transgendered}
     public enum Department { UnderWriting, Claims, Accounting, IT, Marketing }
     public enum Member { Member, NotRegistered }
     public enum Student_loans { Yes, No }
