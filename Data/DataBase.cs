@@ -83,14 +83,14 @@ namespace Data
         /// </summary>
         /// <param name="ArtistID"></param>
         /// <returns></returns>
-        public int Delete(int ArtistID)
+        public int Delete(int id)
         {
             SqlConnection conn = new SqlConnection(connStr);
             conn.Open();
-            SqlCommand dCmd = new SqlCommand("DeleteData", conn);
+            SqlCommand dCmd = new SqlCommand("dbo.usp_MM_Delete", conn);
             dCmd.CommandType = CommandType.StoredProcedure;
 
-            dCmd.Parameters.AddWithValue("@ArtistID", ArtistID);
+            dCmd.Parameters.AddWithValue("@ID", id);
             return dCmd.ExecuteNonQuery();
 
 
