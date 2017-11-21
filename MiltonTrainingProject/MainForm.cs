@@ -13,7 +13,8 @@ namespace MiltonTrainingProject
 {
     public partial class MainForm : Form
     {
-
+        Form1 form1;
+        DataGridView currentGrid;   
         public MainForm()
         {
             InitializeComponent();
@@ -25,14 +26,24 @@ namespace MiltonTrainingProject
             DataSet ds = connect.GetConnection;
             GridView1.DataSource = ds.Tables[0];
             GridView1.Columns["ID"].Visible = false;
+            currentGrid = GridView1;
 
-            gridDeleteButton();
+            gridDeleteLink();
+            gridEditLink();
 
         }
 
-      
 
-        private void gridDeleteButton()
+        private void gridEditLink()
+        {
+            var editLink = new DataGridViewLinkColumn();
+            editLink.Name = "dataEdit";
+            editLink.HeaderText = "Edit";
+            editLink.Text = "Edit";
+            editLink.UseColumnTextForLinkValue = true;
+            this.GridView1.Columns.Add(editLink);
+        }
+        private void gridDeleteLink()
         {
             var deleteLink = new DataGridViewLinkColumn();
             deleteLink.Name = "dataDelete";
@@ -45,7 +56,7 @@ namespace MiltonTrainingProject
       
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
+            form1 = new Form1();
             form1.Show();
         }
 
@@ -56,31 +67,59 @@ namespace MiltonTrainingProject
         }
        
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e){}
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Services data = new Services();
-            DataGridViewRow selectedRow;
-
-            //if click is on new row or header row
-            if (e.RowIndex == GridView1.NewRowIndex || e.RowIndex < 0)
-                return;
-
-            if (GridView1.SelectedCells.Count > 0)
-            {
-                int selectedrowindex = GridView1.SelectedCells[0].RowIndex;
-                selectedRow = GridView1.Rows[selectedrowindex];
-
-                int id =Int32.Parse(selectedRow.Cells["ID"].Value.ToString());
-                GridView1.Rows.RemoveAt(e.RowIndex);
-                data.Delete(id);
-            }
-           
-                //Put some logic here, for example to remove row from your binding list.
-                
-               // int id = Int32.Parse(GridView1.SelectedRows[e.RowIndex].Cells["id"].Value.ToString() + "");
-               
-                
+            int id =Int32.Parse(GridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+            string curr = GridView1.CurrentCell.Value.ToString();
             
+            if (curr == "Delete")
+            {
+                try
+                {
+                    GridView1.Rows.RemoveAt(e.RowIndex);
+                    data.Delete(id);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            if (curr == "Edit")
+            {
+                DataGridViewRow row = currentGrid.Rows[e.RowIndex];
+                Form1 pForm = new Form1();
+                pForm.ShowDialog();
+
+                //if (form1.istrue)
+                //{
+                //    currentGrid.Rows[e.RowIndex].PutEmployeeInGrid(eForm.Employee);
+                //    allGrid.Rows[allGrid.FindRow(eForm.Employee.ID)].PutPersonInGrid(new Person(eForm.Employee));
+                //}
+
+              
+                //data.Update(id);
+               
+            }
+
+        }
+        protected void UpdateRecord(object sender, DataGridViewCellEventArgs e)
+        {
+
+            
+            //DataGridViewRow row = GridView1.Rows[e.RowIndex];
+
+            //TextBox tFN = (TextBox)row.FindControl("txtFName");
+            //TextBox tLN = (TextBox)row.FindControl("txtLName");
+            //TextBox tAge = (TextBox)row.FindControl("txtAge");
+
+            //// instantiate BAL
+            //Services pBAL = new Services();
+
+            //pBAL.Update( tFN.Text, tLN.Text, int.Parse(tAge.Text));
+                          
+
         }
     }
 }

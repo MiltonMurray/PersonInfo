@@ -21,19 +21,19 @@ namespace Data
         /// <param name="ArtistName"></param>       
         /// <returns></returns>
 
-        public int Insert(string fname, string lname, DateTime dob, Int32 ssn, string gender, string mstat )
+        public int Insert(string fname, string lname, DateTime dob, int ssn, string gender, string mstat )
         {
             SqlConnection conn = new SqlConnection(connStr);
             conn.Open();
-            SqlCommand dCmd = new SqlCommand("InsertData", conn);
+            SqlCommand dCmd = new SqlCommand("dbo.usp_MM_Insert", conn);
             dCmd.CommandType = CommandType.StoredProcedure;
 
-            dCmd.Parameters.AddWithValue("@firstName", fname);
-            dCmd.Parameters.AddWithValue("@lastName", lname);
-            dCmd.Parameters.AddWithValue("@dob", dob);
-            dCmd.Parameters.AddWithValue("@ssn", ssn);
-            dCmd.Parameters.AddWithValue("@gender", gender);
-            dCmd.Parameters.AddWithValue("@maritalStatus", mstat);
+            dCmd.Parameters.AddWithValue("@FirstName", fname);
+            dCmd.Parameters.AddWithValue("@LastName", lname);
+            dCmd.Parameters.AddWithValue("@DOB", dob);
+            dCmd.Parameters.AddWithValue("@SSN", ssn);
+            dCmd.Parameters.AddWithValue("@Gender", gender);
+            dCmd.Parameters.AddWithValue("@MaritalStatus", mstat);
             return dCmd.ExecuteNonQuery();
 
         }
@@ -47,18 +47,20 @@ namespace Data
         /// <param name="lastName"></param>
         /// <param name="age"></param>
         /// <returns></returns>
-        public int Update(int ID, string fname)
+        public int Update(string fname, string lname, DateTime dob, int ssn, string gender, string mstat)
         {
             SqlConnection conn = new SqlConnection(connStr);
             conn.Open();
-            SqlCommand cmd = new SqlCommand("UpdateData", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand dCmd = new SqlCommand("dbo.usp_MM_Edit", conn);
+            dCmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@firstName", fname);
-            // dCmd.Parameters.AddWithValue("@lastName", lastName);
-            // dCmd.Parameters.AddWithValue("@age", age);
-            cmd.Parameters.AddWithValue("@ID", ID);
-            return cmd.ExecuteNonQuery();
+            dCmd.Parameters.AddWithValue("@FirstName", fname);
+            dCmd.Parameters.AddWithValue("@LastName", lname);
+            dCmd.Parameters.AddWithValue("@DOB", dob);
+            dCmd.Parameters.AddWithValue("@SSN", ssn);
+            dCmd.Parameters.AddWithValue("@Gender", gender);
+            dCmd.Parameters.AddWithValue("@MaritalStatus", mstat);
+            return dCmd.ExecuteNonQuery();
 
         }
 

@@ -39,10 +39,10 @@ namespace Person
         /// <param name="lastName"></param>
         /// <param name="age"></param>
         /// <returns></returns>
-        public int Update(int personID, string firstName)
+        public int Update(string fname, string lname, DateTime dob, Int32 ssn, string gender, string mstat)
         {
             DataBase data = new DataBase();
-            return data.Update(personID, firstName);
+            return data.Update(fname, lname, dob, ssn, gender, mstat);
 
         }
 
