@@ -24,7 +24,7 @@ namespace MiltonTrainingProject
             Services connect = new Services();
             DataSet ds = connect.GetConnection;
             GridView1.DataSource = ds.Tables[0];
-            GridView1.Columns["Id"].Visible = false;
+            GridView1.Columns["ID"].Visible = false;
 
             gridDeleteButton();
 
@@ -58,28 +58,28 @@ namespace MiltonTrainingProject
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e){}
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            Services data = new Services();
+            DataGridViewRow selectedRow;
+
             //if click is on new row or header row
             if (e.RowIndex == GridView1.NewRowIndex || e.RowIndex < 0)
                 return;
 
-            //Check if click is on specific column 
-            if (e.ColumnIndex == GridView1.Columns["dataDelete"].Index)
+            if (GridView1.SelectedCells.Count > 0)
             {
-                //Put some logic here, for example to remove row from your binding list.
-                GridView1.Rows.RemoveAt(e.RowIndex);
-            }
-        }
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            Services data = new Services();
+                int selectedrowindex = GridView1.SelectedCells[0].RowIndex;
+                selectedRow = GridView1.Rows[selectedrowindex];
 
-            if (GridView1.Rows.Count > 1 && GridView1.SelectedRows[0].Index != GridView1.Rows.Count - 1)
-            {
-                int id = Int32.Parse(GridView1.SelectedRows[0].Cells[0].Value.ToString() + "");
+                int id =Int32.Parse(selectedRow.Cells["ID"].Value.ToString());
+                GridView1.Rows.RemoveAt(e.RowIndex);
                 data.Delete(id);
-                GridView1.Rows.RemoveAt(GridView1.SelectedRows[0].Index);
-                MessageBox.Show("Row Deleted");
             }
+           
+                //Put some logic here, for example to remove row from your binding list.
+                
+               // int id = Int32.Parse(GridView1.SelectedRows[e.RowIndex].Cells["id"].Value.ToString() + "");
+               
+                
             
         }
     }
