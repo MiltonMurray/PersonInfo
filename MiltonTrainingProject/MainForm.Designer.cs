@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mMPersonBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -94,7 +95,7 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -107,6 +108,9 @@
             // 
             this.GridView1.AllowUserToAddRows = false;
             this.GridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.GridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.GridView1.BackgroundColor = System.Drawing.Color.DimGray;
             this.GridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -115,8 +119,8 @@
             this.GridView1.MultiSelect = false;
             this.GridView1.Name = "GridView1";
             this.GridView1.ReadOnly = true;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.GridView1.ShowEditingIcon = false;
             this.GridView1.Size = new System.Drawing.Size(1016, 384);
             this.GridView1.TabIndex = 0;

@@ -7,14 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Person;
+using PServices;
+
 
 namespace MiltonTrainingProject
 {
     public partial class MainForm : Form
     {
         Form1 form1;
-        DataGridView currentGrid;   
+        DataGridView currentGrid;  
+        public DataGridView getGrid { get { return GridView1; } }
         public MainForm()
         {
             InitializeComponent();
@@ -22,18 +24,16 @@ namespace MiltonTrainingProject
         
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Services connect = new Services();
+            PServices.Services connect = new PServices.Services();
             DataSet ds = connect.GetConnection;
             GridView1.DataSource = ds.Tables[0];
             GridView1.Columns["ID"].Visible = false;
             currentGrid = GridView1;
 
             gridDeleteLink();
-            gridEditLink();
+            gridEditLink();           
 
         }
-
-
         private void gridEditLink()
         {
             var editLink = new DataGridViewLinkColumn();
@@ -43,6 +43,7 @@ namespace MiltonTrainingProject
             editLink.UseColumnTextForLinkValue = true;
             this.GridView1.Columns.Add(editLink);
         }
+
         private void gridDeleteLink()
         {
             var deleteLink = new DataGridViewLinkColumn();
@@ -52,8 +53,7 @@ namespace MiltonTrainingProject
             deleteLink.UseColumnTextForLinkValue = true;
             this.GridView1.Columns.Add(deleteLink);
         }
-
-      
+        
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             form1 = new Form1();
@@ -88,38 +88,22 @@ namespace MiltonTrainingProject
             }
             if (curr == "Edit")
             {
+                form1 = new Form1();
+                form1.isEdit = true;
+                
                 DataGridViewRow row = currentGrid.Rows[e.RowIndex];
-                Form1 pForm = new Form1();
-                pForm.ShowDialog();
-
-                //if (form1.istrue)
-                //{
-                //    currentGrid.Rows[e.RowIndex].PutEmployeeInGrid(eForm.Employee);
-                //    allGrid.Rows[allGrid.FindRow(eForm.Employee.ID)].PutPersonInGrid(new Person(eForm.Employee));
-                //}
-
-              
-                //data.Update(id);
-               
+                form1.id = id;
+                form1.Fname = row.Cells[1].Value.ToString();
+                form1.Lname = row.Cells[2].Value.ToString();
+                form1.DOB = row.Cells[3].Value.ToString();
+                form1.SSN = row.Cells[4].Value.ToString();
+                form1.Gender = row.Cells[5].Value.ToString();
+                form1.MaritalStatus = row.Cells[6].Value.ToString();
+                form1.Show();                                            
             }
 
         }
-        protected void UpdateRecord(object sender, DataGridViewCellEventArgs e)
-        {
-
-            
-            //DataGridViewRow row = GridView1.Rows[e.RowIndex];
-
-            //TextBox tFN = (TextBox)row.FindControl("txtFName");
-            //TextBox tLN = (TextBox)row.FindControl("txtLName");
-            //TextBox tAge = (TextBox)row.FindControl("txtAge");
-
-            //// instantiate BAL
-            //Services pBAL = new Services();
-
-            //pBAL.Update( tFN.Text, tLN.Text, int.Parse(tAge.Text));
-                          
-
-        }
+       
+        
     }
 }

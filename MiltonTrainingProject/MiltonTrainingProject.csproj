@@ -128,12 +128,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Person\PServices.csproj">
-      <Project>{12ee7ef1-1e84-4d1e-894d-cb77b90d9f27}</Project>
-      <Name>PServices</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\DeleteImage.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +138,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DeleteImage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Services\PServices.csproj">
+      <Project>{12ee7ef1-1e84-4d1e-894d-cb77b90d9f27}</Project>
+      <Name>PServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -47,13 +47,14 @@ namespace Data
         /// <param name="lastName"></param>
         /// <param name="age"></param>
         /// <returns></returns>
-        public int Update(string fname, string lname, DateTime dob, int ssn, string gender, string mstat)
+        public int Update(int id, string fname, string lname, DateTime dob, int ssn, string gender, string mstat)
         {
             SqlConnection conn = new SqlConnection(connStr);
             conn.Open();
-            SqlCommand dCmd = new SqlCommand("dbo.usp_MM_Edit", conn);
+            SqlCommand dCmd = new SqlCommand("dbo.usp_MM_Update", conn);
             dCmd.CommandType = CommandType.StoredProcedure;
 
+            dCmd.Parameters.AddWithValue("@ID", id);
             dCmd.Parameters.AddWithValue("@FirstName", fname);
             dCmd.Parameters.AddWithValue("@LastName", lname);
             dCmd.Parameters.AddWithValue("@DOB", dob);
@@ -94,8 +95,6 @@ namespace Data
 
             dCmd.Parameters.AddWithValue("@ID", id);
             return dCmd.ExecuteNonQuery();
-
-
 
         }
     }

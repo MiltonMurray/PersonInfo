@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Data;
 
-namespace Person
+namespace PServices
 {
     //Buisness Access Layer
     public class Services
@@ -39,10 +39,10 @@ namespace Person
         /// <param name="lastName"></param>
         /// <param name="age"></param>
         /// <returns></returns>
-        public int Update(string fname, string lname, DateTime dob, Int32 ssn, string gender, string mstat)
+        public int Update(int id , string fname, string lname, DateTime dob, Int32 ssn, string gender, string mstat)
         {
             DataBase data = new DataBase();
-            return data.Update(fname, lname, dob, ssn, gender, mstat);
+            return data.Update(id, fname, lname, dob, ssn, gender, mstat);
 
         }
 
@@ -73,8 +73,9 @@ namespace Person
             DataBase data = new DataBase();
            
             return data.Delete(personID);
-            
-            
+                    
         }
+
+
     }
 }
