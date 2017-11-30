@@ -6,76 +6,47 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using Data;
+using Models;
 
 namespace PServices
 {
     //Buisness Access Layer
     public class Services
     {
-        public Services() { }
-
-        /// <summary>
-        /// insert records into database
-        /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="lastName"></param>
-        /// <param name="age"></param>
-        /// <returns></returns>
-        public int Insert(string fname, string lname, DateTime dob, Int32 ssn, string gender, string mstat)
+        public void Add(Person p)
         {
-            DataBase data = new DataBase();
-           
-            return data.Insert(fname, lname, dob, ssn, gender, mstat);          
-                
-          
+            new PersonData().Add(p);
         }
 
-
-        /// <summary>
-        /// Update records into database
-        /// </summary>
-        /// <param name="personID"></param>
-        /// <param name="firstName"></param>
-        /// <param name="lastName"></param>
-        /// <param name="age"></param>
-        /// <returns></returns>
-        public int Update(int id , string fname, string lname, DateTime dob, Int32 ssn, string gender, string mstat)
+        
+        public void Update(Person p)
         {
-            DataBase data = new DataBase();
-            return data.Update(id, fname, lname, dob, ssn, gender, mstat);
-
+            new PersonData().Update(p);
         }
 
-        /// <summary>
-        /// Load records from database
-        /// </summary>
-        /// <returns></returns>
-        public DataSet GetConnection
+        public List<Person> SelectAll()
         {
-            get { return Load(); }
+            List<Person> employeeList = new List<Person>();
+            DataTable dt = new PersonData().SelectAll();
+            foreach (DataRow dr in dt.Rows)
+            {
+                employeeList.Add(new Person(dr));
+            }
+            return employeeList;
         }
-        private DataSet Load()
-        {
-            DataBase data = new DataBase();
-          
-            return data.Load();
-          
-        }
+
 
         /// <summary>
         /// Delete record from database
         /// </summary>
         /// <param name="personID"></param>
-        /// <returns></returns>
-       
+        /// <returns></returns>   
         public int Delete(int personID)
         {
-            DataBase data = new DataBase();
-           
-            return data.Delete(personID);
-                    
+            return personID;
         }
 
+       
 
     }
 }

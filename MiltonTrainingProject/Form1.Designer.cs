@@ -63,10 +63,11 @@
             // txtFirstName
             // 
             this.txtFirstName.Location = new System.Drawing.Point(21, 18);
+            this.txtFirstName.MaxLength = 25;
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(100, 20);
             this.txtFirstName.TabIndex = 12;
-            this.txtFirstName.Text = "Last Name";
+            this.txtFirstName.Text = "First Name";
             // 
             // txtLastName
             // 

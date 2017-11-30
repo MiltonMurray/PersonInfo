@@ -6,14 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MiltonTrainingProject.Model;
 using System.Windows.Forms;
 
 namespace MiltonTrainingProject
 {
-    public partial class EmployeeForm : Form
+    public partial class CollegeForm : Form
     {
-        public EmployeeForm()
+        public CollegeForm()
         {
             InitializeComponent();
         }

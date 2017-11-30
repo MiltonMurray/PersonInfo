@@ -60,11 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmployeeForm.cs">
+    <Compile Include="CollegeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeeForm.Designer.cs">
-      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    <Compile Include="CollegeForm.Designer.cs">
+      <DependentUpon>CollegeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -78,13 +78,11 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\enum.cs" />
-    <Compile Include="Model\IPersonInterface.cs" />
-    <Compile Include="Model\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="EmployeeForm.resx">
-      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    <Compile Include="UIWork.cs" />
+    <EmbeddedResource Include="CollegeForm.resx">
+      <DependentUpon>CollegeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -140,6 +138,10 @@
     <None Include="Resources\DeleteImage.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{ea856462-307d-47fa-b074-f4ba20d82762}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Services\PServices.csproj">
       <Project>{12ee7ef1-1e84-4d1e-894d-cb77b90d9f27}</Project>
       <Name>PServices</Name>

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PServices;
+using Models;
 
 
 namespace MiltonTrainingProject
@@ -24,9 +25,12 @@ namespace MiltonTrainingProject
         
         private void MainForm_Load(object sender, EventArgs e)
         {
-            PServices.Services connect = new PServices.Services();
-            DataSet ds = connect.GetConnection;
-            GridView1.DataSource = ds.Tables[0];
+            if (true)
+            {
+            
+            }
+            GridView1.AddPersonToGrid(new Services().SelectAll());
+            
             GridView1.Columns["ID"].Visible = false;
             currentGrid = GridView1;
 
@@ -34,6 +38,8 @@ namespace MiltonTrainingProject
             gridEditLink();           
 
         }
+        
+
         private void gridEditLink()
         {
             var editLink = new DataGridViewLinkColumn();
@@ -93,17 +99,20 @@ namespace MiltonTrainingProject
                 
                 DataGridViewRow row = currentGrid.Rows[e.RowIndex];
                 form1.id = id;
-                form1.Fname = row.Cells[1].Value.ToString();
-                form1.Lname = row.Cells[2].Value.ToString();
-                form1.DOB = row.Cells[3].Value.ToString();
-                form1.SSN = row.Cells[4].Value.ToString();
-                form1.Gender = row.Cells[5].Value.ToString();
-                form1.MaritalStatus = row.Cells[6].Value.ToString();
+                form1.TFname = row.Cells[1].Value.ToString();
+                form1.TLname = row.Cells[2].Value.ToString();
+                form1.TDOB = row.Cells[3].Value.ToString();
+                form1.TSSN = row.Cells[4].Value.ToString();
+                form1.TGender = row.Cells[5].Value.ToString();
+                form1.TMaritalStatus = row.Cells[6].Value.ToString();
                 form1.Show();                                            
             }
 
         }
-       
-        
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

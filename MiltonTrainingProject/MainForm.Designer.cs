@@ -31,20 +31,27 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.mMPersonBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.GridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.mMPersonBindingSource)).BeginInit();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.studentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.collegeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.collegeHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.collegeHelpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mMPersonBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mMPersonBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // backgroundWorker1
@@ -66,20 +73,20 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.closeToolStripMenuItem});
+            this.employeeToolStripMenuItem,
+            this.studentToolStripMenuItem,
+            this.collegeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.closeToolStripMenuItem.Text = "Exit";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.fileToolStripMenuItem.Text = "Add";
             // 
             // filterToolStripMenuItem
             // 
+            this.filterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.employeeToolStripMenuItem1,
+            this.collegeHelpToolStripMenuItem,
+            this.employeeToolStripMenuItem2,
+            this.collegeHelpToolStripMenuItem1});
             this.filterToolStripMenuItem.Name = "filterToolStripMenuItem";
             this.filterToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.filterToolStripMenuItem.Text = "Filter";
@@ -87,7 +94,8 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem});
+            this.addToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
@@ -95,7 +103,7 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -126,6 +134,55 @@
             this.GridView1.TabIndex = 0;
             this.GridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // employeeToolStripMenuItem
+            // 
+            this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
+            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.employeeToolStripMenuItem.Text = "College";
+            // 
+            // studentToolStripMenuItem
+            // 
+            this.studentToolStripMenuItem.Name = "studentToolStripMenuItem";
+            this.studentToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.studentToolStripMenuItem.Text = "Employee";
+            // 
+            // collegeToolStripMenuItem
+            // 
+            this.collegeToolStripMenuItem.Name = "collegeToolStripMenuItem";
+            this.collegeToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.collegeToolStripMenuItem.Text = "College Help";
+            // 
+            // employeeToolStripMenuItem1
+            // 
+            this.employeeToolStripMenuItem1.Name = "employeeToolStripMenuItem1";
+            this.employeeToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.employeeToolStripMenuItem1.Text = "All";
+            // 
+            // collegeHelpToolStripMenuItem
+            // 
+            this.collegeHelpToolStripMenuItem.Name = "collegeHelpToolStripMenuItem";
+            this.collegeHelpToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.collegeHelpToolStripMenuItem.Text = "Colleg";
+            // 
+            // employeeToolStripMenuItem2
+            // 
+            this.employeeToolStripMenuItem2.Name = "employeeToolStripMenuItem2";
+            this.employeeToolStripMenuItem2.Size = new System.Drawing.Size(142, 22);
+            this.employeeToolStripMenuItem2.Text = "Employee";
+            // 
+            // collegeHelpToolStripMenuItem1
+            // 
+            this.collegeHelpToolStripMenuItem1.Name = "collegeHelpToolStripMenuItem1";
+            this.collegeHelpToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.collegeHelpToolStripMenuItem1.Text = "College Help";
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -139,10 +196,10 @@
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mMPersonBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mMPersonBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,7 +223,14 @@
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
-        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.DataGridView GridView1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem collegeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem collegeHelpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem collegeHelpToolStripMenuItem1;
     }
 }
