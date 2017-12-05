@@ -32,7 +32,7 @@ namespace MiltonTrainingProject
             GridView1.AddPersonToGrid(new Services().SelectAll());
             
             
-            //currentGrid = GridView1;
+            currentGrid = GridView1;
 
             gridDeleteLink();
             gridEditLink();           
@@ -94,18 +94,15 @@ namespace MiltonTrainingProject
             }
             if (curr == "Edit")
             {
-                form1 = new Form1();
-                form1.isEdit = true;
+                if (currentGrid == GridView1)
+                {
+                    Form1 pform = new Form1(currentGrid.Rows[e.RowIndex].GetPersonFromGrid());
+                    pform.isEdit = true;
+                    pform.ShowDialog();
+                   
                 
-                DataGridViewRow row = currentGrid.Rows[e.RowIndex];
-                form1.id = id;
-                form1.TFname = row.Cells[1].Value.ToString();
-                form1.TLname = row.Cells[2].Value.ToString();
-                form1.TDOB = row.Cells[3].Value.ToString();
-                form1.TSSN = row.Cells[4].Value.ToString();
-                form1.TGender = row.Cells[5].Value.ToString();
-                form1.TMaritalStatus = row.Cells[6].Value.ToString();
-                form1.Show();                                            
+                }
+                                                      
             }
 
         }

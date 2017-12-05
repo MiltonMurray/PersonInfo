@@ -21,7 +21,7 @@ namespace Data
         }
         public void Update (Person p)
         {
-            ExecuteProc("dbo.usp_MM_Insert", PersonCo(p));
+            ExecuteProc("dbo.usp_MM_Update", PersonCo(p));
         }
         public void Delete (int id)
         {

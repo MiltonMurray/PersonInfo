@@ -15,8 +15,7 @@ namespace MiltonTrainingProject
 {
     public partial class Form1 : Form
     {
-        public bool isEdit { get; set; }
-        public Person Person { get; set; }
+        
         public int id { get; set; }
         public string TFname
         {
@@ -48,12 +47,18 @@ namespace MiltonTrainingProject
             get { return cbMaritalStatus.Text; }
             set { cbMaritalStatus.Text = value; }
         }
+        public bool isEdit { get; set; }
+        public Person Person { get; set; }
 
-
-        public Form1()
+        public Form1(Person p = null)
         {
-            InitializeComponent();           
+            InitializeComponent();
+            Person = p;
+            
         }
+
+      
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -67,6 +72,7 @@ namespace MiltonTrainingProject
            
             if (collect())
             {
+
                 if (isEdit)
                 {
                     serv.Update(Person);
@@ -74,7 +80,7 @@ namespace MiltonTrainingProject
                 }
                 else
                 {
-                    serv.Add(Person);             
+                    //serv.Add(Person);             
                     MessageBox.Show("New record inserted successfully.");
                 }
             }
@@ -132,8 +138,8 @@ namespace MiltonTrainingProject
                 //collegeBox.SelectedIndex = collegeBox.FindCollegeIndex(Employee.College);
                 dPicker.Text = Person.DOB.ToShortDateString();
                 //hiredPicker.Text = Employee.HireDate.ToShortDateString();
-                int ssn = int.Parse(txtSSN.Text);
-                ssn = Person.SSN;
+                txtSSN.Text = Person.SSN.ToString();
+               
             }
         }
     }

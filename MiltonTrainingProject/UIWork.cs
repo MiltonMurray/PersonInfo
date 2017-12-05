@@ -58,5 +58,17 @@ namespace MiltonTrainingProject
                 Value = value;
             }
         }
+        public static Person GetPersonFromGrid(this DataGridViewRow row)
+        {
+            Person p = new Person();
+            p.ID = (int)row.Tag;
+            p.LastName = row.Cells[1].Value.ToString();
+            p.FirstName = row.Cells[0].Value.ToString();           
+            p.SSN = (int)row.Cells[3].Value;
+            p.DOB = Convert.ToDateTime(row.Cells[2].Value);
+            p.Gender = row.Cells[4].Value.ToString().GetEnumFromString<Gender>();
+            p.MaritalStatus = row.Cells[5].Value.ToString().GetEnumFromString<MaritalStatus>();            
+            return p;
+        }
     }
 }
