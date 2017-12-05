@@ -52,33 +52,9 @@ namespace MiltonTrainingProject
 
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
-        private void Form1_load(object sender, EventArgs e)
-        {
-            string[] gender = Enum.GetNames(typeof(Gender));            
-            cbGender.Items.AddRange(gender);
-
-            string[] mstat = Enum.GetNames(typeof(MaritalStatus));
-            cbMaritalStatus.Items.AddRange(mstat);
-
-
-            if (Person != null)
-            {
-                txtFirstName.Text = Person.FirstName;
-                txtLastName.Text = Person.LastName;
-               // departmentBox.Text = Enum.GetName(typeof(Department), Employee.Department);
-                cbGender.Text = Enum.GetName(typeof(Gender), Person.Gender);
-                //gymMemberBox.Text = Enum.GetName(typeof(Membership), Employee.GymMember);
-                cbMaritalStatus.Text = Enum.GetName(typeof(MaritalStatus), Person.MaritalStatus);
-                //collegeBox.SelectedIndex = collegeBox.FindCollegeIndex(Employee.College);
-                dPicker.Text = Person.DOB.ToShortDateString();
-                //hiredPicker.Text = Employee.HireDate.ToShortDateString();
-                int ssn = int.Parse(txtSSN.Text);
-                ssn = Person.SSN;
-            }
-        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             MainForm a = new MainForm();
@@ -87,15 +63,8 @@ namespace MiltonTrainingProject
             // Page is valid, lets go ahead and insert records          
             Services serv = new Services();
 
-            // Instantiate the object we have to deal with
+       
            
-            string fname = txtFirstName.Text;
-            string lname = txtLastName.Text;
-            DateTime dob = Convert.ToDateTime(dPicker.Text);
-            int ssn = int.Parse(txtSSN.Text);
-            string gender = cbGender.Text;
-            string mstat = cbMaritalStatus.Text;
-
             if (collect())
             {
                 if (isEdit)
@@ -108,7 +77,9 @@ namespace MiltonTrainingProject
                     serv.Add(Person);             
                     MessageBox.Show("New record inserted successfully.");
                 }
-            }                     
+            }
+           
+           
                              
         }
         private bool collect()
@@ -123,19 +94,47 @@ namespace MiltonTrainingProject
                 Person.LastName = txtLastName.Text;
                 Person.DOB = Convert.ToDateTime(dPicker.Text);
                 Person.SSN = int.Parse(txtSSN.Text);
-                Person.Gender = (Gender)(cbGender.SelectedItem);              
-                Person.MaritalStatus = (MaritalStatus)(cbMaritalStatus.SelectedItem);
- 
+                Person.Gender = cbGender.Text.GetEnumFromString<Gender>();
+                Person.MaritalStatus = cbMaritalStatus.Text.GetEnumFromString<MaritalStatus>();
+
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 return false;
             }
         }
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+            string[] n = Enum.GetNames(typeof(Gender));
+            int[] v = (int[])Enum.GetValues(typeof(Gender));
+            cbGender.AddItemsToBox(n, v);
+
+            n = Enum.GetNames(typeof(MaritalStatus));
+            v = (int[])Enum.GetValues(typeof(MaritalStatus));
+            cbMaritalStatus.AddItemsToBox(n, v);
+
+
+            if (Person != null)
+            {
+                txtFirstName.Text = Person.FirstName;
+                txtLastName.Text = Person.LastName;
+                // departmentBox.Text = Enum.GetName(typeof(Department), Employee.Department);
+                cbGender.Text = Enum.GetName(typeof(Gender), Person.Gender);
+                //gymMemberBox.Text = Enum.GetName(typeof(Membership), Employee.GymMember);
+                cbMaritalStatus.Text = Enum.GetName(typeof(MaritalStatus), Person.MaritalStatus);
+                //collegeBox.SelectedIndex = collegeBox.FindCollegeIndex(Employee.College);
+                dPicker.Text = Person.DOB.ToShortDateString();
+                //hiredPicker.Text = Employee.HireDate.ToShortDateString();
+                int ssn = int.Parse(txtSSN.Text);
+                ssn = Person.SSN;
+            }
         }
     }
 }

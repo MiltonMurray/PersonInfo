@@ -26,13 +26,13 @@ namespace PServices
 
         public List<Person> SelectAll()
         {
-            List<Person> employeeList = new List<Person>();
+            List<Person> personList = new List<Person>();
             DataTable dt = new PersonData().SelectAll();
             foreach (DataRow dr in dt.Rows)
             {
-                employeeList.Add(new Person(dr));
+                personList.Add(new Person(dr));
             }
-            return employeeList;
+            return personList;
         }
 
 

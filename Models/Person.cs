@@ -46,8 +46,11 @@ namespace Models
             ID = (int)dr["ID"];
             LastName = dr["Last Name"].ToString();
             FirstName = dr["First Name"].ToString();
-            SSN = (int)dr["SSN"];
-            DOB = (DateTime)dr["DOB"];
+            SSN = (int)dr["Social Security #"];
+            DOB = (DateTime)dr["Date of Birth"];
+            Gender = (Gender)(dr["Gender"]);
+            MaritalStatus = (MaritalStatus)dr["Marital Status"];
+
         }
     }
 }

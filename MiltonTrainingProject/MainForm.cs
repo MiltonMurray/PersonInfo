@@ -31,8 +31,8 @@ namespace MiltonTrainingProject
             }
             GridView1.AddPersonToGrid(new Services().SelectAll());
             
-            GridView1.Columns["ID"].Visible = false;
-            currentGrid = GridView1;
+            
+            //currentGrid = GridView1;
 
             gridDeleteLink();
             gridEditLink();           
@@ -77,7 +77,7 @@ namespace MiltonTrainingProject
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Services data = new Services();
-            int id =Int32.Parse(GridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+            int id =Int32.Parse(GridView1.Rows[e.RowIndex].Tag.ToString());
             string curr = GridView1.CurrentCell.Value.ToString();
             
             if (curr == "Delete")

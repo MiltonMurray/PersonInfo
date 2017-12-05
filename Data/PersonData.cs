@@ -17,11 +17,15 @@ namespace Data
         }
         public DataTable SelectAll()
         {
-           return GetData("dbo.usp_MM_Order").Tables[0];
+           return GetData("dbo.usp_MM_Order_Person").Tables[0];
         }
         public void Update (Person p)
         {
             ExecuteProc("dbo.usp_MM_Insert", PersonCo(p));
+        }
+        public void Delete (Person p)
+        {
+            ExecuteProc("dbo.usp_MM_Delete", PersonCo(p));
         }
         /// <summary>
         /// Used to insert records into database
@@ -107,8 +111,8 @@ namespace Data
             paramList.Add(new SqlParameter("@LastName", SqlDbType.VarChar) { Value = p.LastName });
             paramList.Add(new SqlParameter("@DOB", SqlDbType.Date) { Value = p.DOB });
             paramList.Add(new SqlParameter("@SSN", SqlDbType.Int) { Value = p.SSN });
-            paramList.Add(new SqlParameter("@Gender", SqlDbType.VarChar) { Value = p.Gender });
-            paramList.Add(new SqlParameter("@MaritalStatus", SqlDbType.VarChar) { Value = p.MaritalStatus });
+            paramList.Add(new SqlParameter("@Gender", SqlDbType.Int) { Value = p.Gender });
+            paramList.Add(new SqlParameter("@MaritalStatus", SqlDbType.Int) { Value = p.MaritalStatus });
             if (p.ID > 0)
             {
                 paramList.Add(new SqlParameter("@ID", SqlDbType.Int) { Value = p.ID });
