@@ -36,14 +36,10 @@ namespace PServices
         }
 
 
-        /// <summary>
-        /// Delete record from database
-        /// </summary>
-        /// <param name="personID"></param>
-        /// <returns></returns>   
-        public int Delete(int personID)
+        
+        public void Delete(int id)
         {
-            return personID;
+            new PersonData().Delete(id);
         }
 
        

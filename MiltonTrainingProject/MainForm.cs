@@ -89,7 +89,7 @@ namespace MiltonTrainingProject
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Something Happend");
                 }
             }
             if (curr == "Edit")

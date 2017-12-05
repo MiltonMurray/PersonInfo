@@ -23,82 +23,13 @@ namespace Data
         {
             ExecuteProc("dbo.usp_MM_Insert", PersonCo(p));
         }
-        public void Delete (Person p)
+        public void Delete (int id)
         {
-            ExecuteProc("dbo.usp_MM_Delete", PersonCo(p));
+            List<SqlParameter> paramList = new List<SqlParameter>();
+            paramList.Add(new SqlParameter("@ID", SqlDbType.Int) { Value = id });
+            ExecuteProc("dbo.usp_MM_Delete", paramList);
         }
-        /// <summary>
-        /// Used to insert records into database
-        /// </summary>
-        /// <param name="fname"></param>
-        /// <param name="lname"></param>
-        /// <param name="dob"></param>
-        /// <param name="ssn"></param>
-        /// <param name="gender"></param>
-        /// <param name="mstat"></param>
-        /// <returns></returns>
-        public int Insert(string fname, string lname, DateTime dob, int ssn, string gender, string mstat)
-        {
-            SqlConnection conn = new SqlConnection(connStr);
-            conn.Open();
-            SqlCommand dCmd = new SqlCommand("dbo.usp_MM_Insert", conn);
-            dCmd.CommandType = CommandType.StoredProcedure;
-
-            dCmd.Parameters.AddWithValue("@FirstName", fname);
-            dCmd.Parameters.AddWithValue("@LastName", lname);
-            dCmd.Parameters.AddWithValue("@DOB", dob);
-            dCmd.Parameters.AddWithValue("@SSN", ssn);
-            dCmd.Parameters.AddWithValue("@Gender", gender);
-            dCmd.Parameters.AddWithValue("@MaritalStatus", mstat);
-            return dCmd.ExecuteNonQuery();
-
-        }
-
-        /// <summary>
-        /// Update record into database
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="fname"></param>
-        /// <param name="lname"></param>
-        /// <param name="dob"></param>
-        /// <param name="ssn"></param>
-        /// <param name="gender"></param>
-        /// <param name="mstat"></param>
-        /// <returns></returns>
-        public int Update(int id, string fname, string lname, DateTime dob, int ssn, string gender, string mstat)
-        {
-            SqlConnection conn = new SqlConnection(connStr);
-            conn.Open();
-            SqlCommand dCmd = new SqlCommand("dbo.usp_MM_Update", conn);
-            dCmd.CommandType = CommandType.StoredProcedure;
-
-            dCmd.Parameters.AddWithValue("@ID", id);
-            dCmd.Parameters.AddWithValue("@FirstName", fname);
-            dCmd.Parameters.AddWithValue("@LastName", lname);
-            dCmd.Parameters.AddWithValue("@DOB", dob);
-            dCmd.Parameters.AddWithValue("@SSN", ssn);
-            dCmd.Parameters.AddWithValue("@Gender", gender);
-            dCmd.Parameters.AddWithValue("@MaritalStatus", mstat);
-            return dCmd.ExecuteNonQuery();
-            //TODO 
-        }
-
-        /// <summary>
-        /// Delete record from database
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public int Delete(int id)
-        {
-            SqlConnection conn = new SqlConnection(connStr);
-            conn.Open();
-            SqlCommand dCmd = new SqlCommand("dbo.usp_MM_Delete", conn);
-            dCmd.CommandType = CommandType.StoredProcedure;
-
-            dCmd.Parameters.AddWithValue("@ID", id);
-            return dCmd.ExecuteNonQuery();
-        }
-
+       
         /// <summary>
         /// Store Parameters
         /// </summary>
