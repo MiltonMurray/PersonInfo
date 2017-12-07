@@ -49,22 +49,18 @@ namespace MiltonTrainingProject
         }
         public bool isEdit { get; set; }
         public Person Person { get; set; }
+        private MainForm mform;
 
-        public Form1(Person p = null)
+        public Form1(MainForm form, Person p = null)
         {
             InitializeComponent();
             Person = p;
-            
+            mform = form;
         }
-
-      
-
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            MainForm a = new MainForm();
-            
-
+           
             // Page is valid, lets go ahead and insert records          
             Services serv = new Services();
 
@@ -72,17 +68,19 @@ namespace MiltonTrainingProject
            
             if (collect())
             {
-
                 if (isEdit)
-                {
+                {                                
                     serv.Update(Person);
                     MessageBox.Show("Record updated successfully.");
+                    Close();
                 }
                 else
                 {
-                    //serv.Add(Person);             
+                    serv.Add(Person);             
                     MessageBox.Show("New record inserted successfully.");
+                    Close();
                 }
+                mform.refresh();
             }
            
            
@@ -129,8 +127,8 @@ namespace MiltonTrainingProject
 
             if (Person != null)
             {
-                txtFirstName.Text = Person.FirstName;
                 txtLastName.Text = Person.LastName;
+                txtFirstName.Text = Person.FirstName;              
                 // departmentBox.Text = Enum.GetName(typeof(Department), Employee.Department);
                 cbGender.Text = Enum.GetName(typeof(Gender), Person.Gender);
                 //gymMemberBox.Text = Enum.GetName(typeof(Membership), Employee.GymMember);

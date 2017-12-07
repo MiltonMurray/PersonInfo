@@ -14,8 +14,8 @@ namespace MiltonTrainingProject
         public static void AddPersonToGrid(this DataGridView g, Person p)
         {
            
-            g.Rows[g.Rows.Add(p.FirstName, 
-                                p.LastName, 
+            g.Rows[g.Rows.Add(p.LastName, 
+                                p.FirstName, 
                                 p.DOB.ToShortDateString(), 
                                 p.SSN,
                                 Enum.GetName(typeof(Gender), 

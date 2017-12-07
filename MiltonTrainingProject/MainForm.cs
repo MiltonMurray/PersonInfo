@@ -16,8 +16,9 @@ namespace MiltonTrainingProject
     public partial class MainForm : Form
     {
         Form1 form1;
+        
         DataGridView currentGrid;  
-        public DataGridView getGrid { get { return GridView1; } }
+        public DataGridView getGrid { get { return currentGrid; } }
         public MainForm()
         {
             InitializeComponent();
@@ -29,16 +30,18 @@ namespace MiltonTrainingProject
             {
             
             }
-            GridView1.AddPersonToGrid(new Services().SelectAll());
-            
-            
+            GridView1.AddPersonToGrid(new Services().SelectAll());          
             currentGrid = GridView1;
 
             gridDeleteLink();
             gridEditLink();           
 
         }
-        
+        public void refresh()
+        {
+            GridView1.Rows.Clear();
+            GridView1.AddPersonToGrid(new Services().SelectAll());
+        }
 
         private void gridEditLink()
         {
@@ -62,7 +65,7 @@ namespace MiltonTrainingProject
         
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            form1 = new Form1();
+            form1 = new Form1(this);
             form1.Show();
         }
 
@@ -96,11 +99,9 @@ namespace MiltonTrainingProject
             {
                 if (currentGrid == GridView1)
                 {
-                    Form1 pform = new Form1(currentGrid.Rows[e.RowIndex].GetPersonFromGrid());
-                    pform.isEdit = true;
-                    pform.ShowDialog();
-                   
-                
+                    form1 = new Form1(this,currentGrid.Rows[e.RowIndex].GetPersonFromGrid());
+                    form1.isEdit = true;
+                    form1.ShowDialog();                                 
                 }
                                                       
             }
