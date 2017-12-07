@@ -8,8 +8,9 @@ namespace Models
 {
     public interface IPersonInterface<T>
     {
-        int Add(T add);
+        void Add(T add);
         void Delete(int id);
+        List<T> SelectAll();
         void Update(T update);
     }
 }

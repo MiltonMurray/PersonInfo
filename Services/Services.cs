@@ -11,19 +11,30 @@ using Models;
 namespace PServices
 {
     //Buisness Access Layer
-    public class Services
+    public class Services : IPersonInterface<Person>
     {
+        /// <summary>
+        /// Add Person
+        /// </summary>
+        /// <param name="p"></param>
         public void Add(Person p)
         {
             new PersonData().Add(p);
         }
 
-        
+        /// <summary>
+        /// Updates database
+        /// </summary>
+        /// <param name="p"></param>
         public void Update(Person p)
         {
             new PersonData().Update(p);
         }
 
+        /// <summary>
+        /// Collects all the data into a list
+        /// </summary>
+        /// <returns></returns>
         public List<Person> SelectAll()
         {
             List<Person> personList = new List<Person>();
@@ -34,15 +45,14 @@ namespace PServices
             }
             return personList;
         }
-
-
         
+        /// <summary>
+        /// Delete row in database
+        /// </summary>
+        /// <param name="id"></param>
         public void Delete(int id)
         {
             new PersonData().Delete(id);
         }
-
-       
-
     }
 }

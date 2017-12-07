@@ -13,7 +13,7 @@ namespace Data
         protected static string connStr { get; private set; }
         static DataBase()
         {
-            connStr = "Data Source=sql_dev;Initial Catalog=INTERN_TEST;Integrated Security=True";
+            connStr = "Data Source=sql_dev;Initial Catalog=INTERN_TEST;Integrated Security=True"; //Access string
         }
 
         /// <summary>

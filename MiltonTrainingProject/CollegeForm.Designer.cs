@@ -28,58 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtCName = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtStreet = new System.Windows.Forms.TextBox();
+            this.txtZip = new System.Windows.Forms.TextBox();
+            this.addCollegebtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.cbState = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtCName
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(171, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtCName.Location = new System.Drawing.Point(12, 12);
+            this.txtCName.Name = "txtCName";
+            this.txtCName.Size = new System.Drawing.Size(171, 20);
+            this.txtCName.TabIndex = 0;
+            this.txtCName.Text = "Name";
             // 
-            // textBox2
+            // txtCity
             // 
-            this.textBox2.Location = new System.Drawing.Point(215, 13);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtCity.Location = new System.Drawing.Point(215, 13);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(100, 20);
+            this.txtCity.TabIndex = 1;
+            this.txtCity.Text = "City";
             // 
-            // textBox3
+            // txtStreet
             // 
-            this.textBox3.Location = new System.Drawing.Point(215, 59);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
+            this.txtStreet.Location = new System.Drawing.Point(12, 59);
+            this.txtStreet.Name = "txtStreet";
+            this.txtStreet.Size = new System.Drawing.Size(158, 20);
+            this.txtStreet.TabIndex = 3;
+            this.txtStreet.Text = "Street";
             // 
-            // textBox4
+            // txtZip
             // 
-            this.textBox4.Location = new System.Drawing.Point(12, 59);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(158, 20);
-            this.textBox4.TabIndex = 3;
+            this.txtZip.Location = new System.Drawing.Point(13, 98);
+            this.txtZip.Name = "txtZip";
+            this.txtZip.Size = new System.Drawing.Size(100, 20);
+            this.txtZip.TabIndex = 4;
+            this.txtZip.Text = "Zip Code";
             // 
-            // textBox5
+            // addCollegebtn
             // 
-            this.textBox5.Location = new System.Drawing.Point(13, 98);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 4;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(38, 159);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.addCollegebtn.Location = new System.Drawing.Point(38, 159);
+            this.addCollegebtn.Name = "addCollegebtn";
+            this.addCollegebtn.Size = new System.Drawing.Size(75, 23);
+            this.addCollegebtn.TabIndex = 5;
+            this.addCollegebtn.Text = "ADD";
+            this.addCollegebtn.UseVisualStyleBackColor = true;
+            this.addCollegebtn.Click += new System.EventHandler(this.addCollegebtn_Click);
             // 
             // button2
             // 
@@ -87,21 +85,30 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 6;
-            this.button2.Text = "button2";
+            this.button2.Text = "CANCEL";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // cbState
+            // 
+            this.cbState.FormattingEnabled = true;
+            this.cbState.Location = new System.Drawing.Point(194, 59);
+            this.cbState.Name = "cbState";
+            this.cbState.Size = new System.Drawing.Size(121, 21);
+            this.cbState.TabIndex = 7;
+            this.cbState.Text = "State";
             // 
             // CollegeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 208);
+            this.Controls.Add(this.cbState);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.addCollegebtn);
+            this.Controls.Add(this.txtZip);
+            this.Controls.Add(this.txtStreet);
+            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.txtCName);
             this.Name = "CollegeForm";
             this.Text = "CollegeForm";
             this.ResumeLayout(false);
@@ -111,12 +118,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtCName;
+        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.TextBox txtStreet;
+        private System.Windows.Forms.TextBox txtZip;
+        private System.Windows.Forms.Button addCollegebtn;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cbState;
     }
 }

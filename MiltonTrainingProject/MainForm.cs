@@ -15,27 +15,22 @@ namespace MiltonTrainingProject
 {
     public partial class MainForm : Form
     {
-        Form1 form1;
-        
+        Form1 form1;        
         DataGridView currentGrid;  
         public DataGridView getGrid { get { return currentGrid; } }
+
         public MainForm()
         {
             InitializeComponent();
         }
         
         private void MainForm_Load(object sender, EventArgs e)
-        {
-            if (true)
-            {
-            
-            }
+        {          
             GridView1.AddPersonToGrid(new Services().SelectAll());          
             currentGrid = GridView1;
 
             gridDeleteLink();
-            gridEditLink();           
-
+            gridEditLink();
         }
         public void refresh()
         {
@@ -69,14 +64,6 @@ namespace MiltonTrainingProject
             form1.Show();
         }
 
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-            
-        }
-       
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e){}
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Services data = new Services();
@@ -107,7 +94,7 @@ namespace MiltonTrainingProject
             }
 
         }
-
+ 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();

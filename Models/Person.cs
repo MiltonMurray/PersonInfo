@@ -50,7 +50,6 @@ namespace Models
             DOB = (DateTime)dr["Date of Birth"];
             Gender = (Gender)(dr["Gender"]);
             MaritalStatus = (MaritalStatus)dr["Marital Status"];
-
         }
     }
 }

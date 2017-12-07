@@ -100,6 +100,7 @@
             this.btnCancel.TabIndex = 14;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // dPicker
             // 

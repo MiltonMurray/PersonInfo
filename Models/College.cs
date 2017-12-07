@@ -31,7 +31,7 @@ namespace Models
             Name = dr["Name"].ToString();
             Street = dr["Street"].ToString();
             City = dr["City"].ToString();
-            State = (State)Convert.ToInt32(dr["State_"]);
+            State = (State)Convert.ToInt32(dr["State"]);
             Zip = (int)dr["Zip"];
         }
         public College() { }

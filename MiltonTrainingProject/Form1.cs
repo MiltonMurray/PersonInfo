@@ -15,38 +15,7 @@ namespace MiltonTrainingProject
 {
     public partial class Form1 : Form
     {
-        
-        public int id { get; set; }
-        public string TFname
-        {
-            get { return txtFirstName.Text; }
-            set { txtFirstName.Text = value; }
-        }
-        public string TLname
-        {
-            get { return txtFirstName.Text; }
-            set { txtLastName.Text = value; }
-        }
-        public string TDOB
-        {
-            get { return dPicker.Text; }
-            set { dPicker.Text = value; }
-        }
-        public string TSSN
-        {
-            get { return txtSSN.Text; }
-            set { txtSSN.Text = value; }
-        }
-        public string TGender
-        {
-            get { return cbGender.Text; }
-            set { cbGender.Text = value; }
-        }
-        public string TMaritalStatus
-        {
-            get { return cbMaritalStatus.Text; }
-            set { cbMaritalStatus.Text = value; }
-        }
+         
         public bool isEdit { get; set; }
         public Person Person { get; set; }
         private MainForm mform;
@@ -58,14 +27,15 @@ namespace MiltonTrainingProject
             mform = form;
         }
 
+        /// <summary>
+        /// Either adds or updates record based on edit click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
-        {
-           
-            // Page is valid, lets go ahead and insert records          
+        {                          
             Services serv = new Services();
-
-       
-           
+          
             if (collect())
             {
                 if (isEdit)
@@ -81,11 +51,13 @@ namespace MiltonTrainingProject
                     Close();
                 }
                 mform.refresh();
-            }
-           
-           
-                             
+            }                           
         }
+
+        /// <summary>
+        /// True: if nothing is being edited, then populates model class
+        /// </summary>
+        /// <returns></returns>
         private bool collect()
         {
             if (!isEdit)
@@ -109,22 +81,24 @@ namespace MiltonTrainingProject
                 return false;
             }
         }
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            string[] n = Enum.GetNames(typeof(Gender));
-            int[] v = (int[])Enum.GetValues(typeof(Gender));
+            //gets the name and value of enums and store them in the combobox
+            string[] n = Enum.GetNames(typeof(Gender));         
+            int[] v = (int[])Enum.GetValues(typeof(Gender));     
             cbGender.AddItemsToBox(n, v);
 
             n = Enum.GetNames(typeof(MaritalStatus));
             v = (int[])Enum.GetValues(typeof(MaritalStatus));
             cbMaritalStatus.AddItemsToBox(n, v);
 
-
+            //set text fields to Model values
             if (Person != null)
             {
                 txtLastName.Text = Person.LastName;
@@ -139,6 +113,15 @@ namespace MiltonTrainingProject
                 txtSSN.Text = Person.SSN.ToString();
                
             }
+        }
+        /// <summary>
+        /// "CANCEL" button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
