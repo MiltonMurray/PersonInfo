@@ -14,12 +14,12 @@ namespace MiltonTrainingProject
 {
     public partial class CollegeForm : Form
     {
-        public College college { get; set; }
-        public bool isEdit {get; set; }
+        public College College { get; set; }
+        public bool IsEdit {get; set; }
         private MainForm mform;
-
+       
         public CollegeForm(MainForm form)
-        {
+        {      
             InitializeComponent();
             mform = form;
         }
@@ -30,18 +30,22 @@ namespace MiltonTrainingProject
             int[] v = (int[])Enum.GetValues(typeof(State));
             cbState.AddItemsToBox(n,v);
 
-            if (College)
+            if (College != null)
             {
-
+                txtCity.Text = College.City;
+                txtCName.Text = College.Name;
+                cbState.Text = Enum.GetName(typeof(State),College.State);
+                txtStreet.Text = College.Street;
+                txtZip.Text = College.Zip.ToString();
             }
         }
 
         private void addCollegebtn_Click(object sender, EventArgs e)
         {
-            Services serv = new Services();
+            CollegeService serv = new CollegeService();
             if (collect())
             {
-                if (isEdit)
+                if (IsEdit)
                 {
                     serv.Update(College);
                     MessageBox.Show("Record updated successfully.");
@@ -58,16 +62,17 @@ namespace MiltonTrainingProject
         }
         public bool collect()
         {
-            if (!isEdit)
+            if (!IsEdit)
             {
-                College c = new College();
+                College = new College();
             }
             try
             {
-                college.Name = txtCName.Text;
-                college.Street = txtStreet.Text;
-                college.State = cbState.Text.GetEnumFromString<State>();
-                college.Zip = int.Parse(txtZip.Text);
+                College.Name = txtCName.Text;
+                College.Street = txtStreet.Text;
+                College.City = txtCity.Text;
+                College.State = cbState.Text.GetEnumFromString<State>();
+                College.Zip = int.Parse(txtZip.Text);
                 return true;
                 
             }

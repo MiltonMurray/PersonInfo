@@ -14,15 +14,15 @@ namespace Data
     {
         public void Add(College c)
         {
-            ExecuteProc("dbo.usp_MM_Insert", CollegeCo(c));
+            ExecuteProc("dbo.usp_MM_Ins_College", CollegeCo(c));
         }
         public DataTable SelectAll()
         {
             return GetData("dbo.usp_MM_Order_Person").Tables[0];
         }
-        public void Update(College p)
+        public void Update(College c)
         {
-            ExecuteProc("dbo.usp_MM_Update", CollegeCo(p));
+            ExecuteProc("dbo.usp_MM_Update", CollegeCo(c));
         }
         public void Delete(int id)
         {
@@ -32,13 +32,16 @@ namespace Data
         }
         public List<SqlParameter> CollegeCo(College c)
         {
-            List<SqlParameter> paramList = new List<SqlParameter>();
-            paramList.Add(new SqlParameter("@CollegeID", SqlDbType.VarChar) { Value = c.ID });
+            List<SqlParameter> paramList = new List<SqlParameter>();          
             paramList.Add(new SqlParameter("@CollegeName", SqlDbType.VarChar) { Value = c.Name });
             paramList.Add(new SqlParameter("@Street", SqlDbType.VarChar) { Value = c.Street});
             paramList.Add(new SqlParameter("@City", SqlDbType.VarChar) { Value = c.City });
-            paramList.Add(new SqlParameter("@State", SqlDbType.VarChar) { Value = c.State });
-            paramList.Add(new SqlParameter("@ZIP", SqlDbType.VarChar) { Value = c.Zip });
+            paramList.Add(new SqlParameter("@State", SqlDbType.Int) { Value = c.State }); 
+            paramList.Add(new SqlParameter("@Zip", SqlDbType.Int) { Value = c.Zip });
+            if (c.ID > 0)
+            {
+                paramList.Add(new SqlParameter("@ID", SqlDbType.Int) { Value = c.ID });
+            }
             return paramList;
         }
     }

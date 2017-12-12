@@ -8,8 +8,7 @@ using System.Data;
 namespace Models
 {
    public class Person
-    {
-
+   {
         public int ID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
@@ -51,5 +50,23 @@ namespace Models
             Gender = (Gender)(dr["Gender"]);
             MaritalStatus = (MaritalStatus)dr["Marital Status"];
         }
+   }
+   public class Student
+    {
+        public College college { get; set; }
+        public DateTime date_start { get; set; }
+        public int college_year { get; set; }
+        public int avgHours { get; set; }
+
+
+    }
+    public class Employee
+    {
+        public DateTime date_hired { get; set; }
+        public Department department { get; set; }
+        public Member member { get; set; }
+
+
+
     }
 }

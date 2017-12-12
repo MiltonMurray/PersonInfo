@@ -15,7 +15,8 @@ namespace MiltonTrainingProject
 {
     public partial class MainForm : Form
     {
-        Form1 form1;        
+        Form1 form1;
+        CollegeForm cform;
         DataGridView currentGrid;  
         public DataGridView getGrid { get { return currentGrid; } }
 
@@ -28,6 +29,7 @@ namespace MiltonTrainingProject
         {          
             GridView1.AddPersonToGrid(new Services().SelectAll());          
             currentGrid = GridView1;
+           
 
             gridDeleteLink();
             gridEditLink();
@@ -94,10 +96,23 @@ namespace MiltonTrainingProject
             }
 
         }
- 
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void employeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cform = new CollegeForm(this);
+            cform.Show();
+
+
+        }
+
+        private void mnuCollegeFilter_Click(object sender, EventArgs e)
+        {
+            currentGrid = CollegeGridView1;
         }
     }
 }

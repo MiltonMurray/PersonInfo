@@ -14,8 +14,7 @@ using Models;
 namespace MiltonTrainingProject
 {
     public partial class Form1 : Form
-    {
-         
+    {        
         public bool isEdit { get; set; }
         public Person Person { get; set; }
         private MainForm mform;

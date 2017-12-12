@@ -34,12 +34,12 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.employeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCollegeAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.studentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.collegeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.employeeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.collegeHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCollegeFilter = new System.Windows.Forms.ToolStripMenuItem();
             this.employeeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.collegeHelpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,18 +48,19 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.GridView1 = new System.Windows.Forms.DataGridView();
-            this.mMPersonBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ssn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dob = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mstat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mMPersonBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.CollegeGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mMPersonBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CollegeGridView1)).BeginInit();
             this.SuspendLayout();
-           
             // 
             // menuStrip1
             // 
@@ -76,36 +77,37 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.employeeToolStripMenuItem,
+            this.mnuCollegeAdd,
             this.studentToolStripMenuItem,
             this.collegeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.fileToolStripMenuItem.Text = "Add";
             // 
-            // employeeToolStripMenuItem
+            // mnuCollegeAdd
             // 
-            this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
-            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.employeeToolStripMenuItem.Text = "College";
+            this.mnuCollegeAdd.Name = "mnuCollegeAdd";
+            this.mnuCollegeAdd.Size = new System.Drawing.Size(152, 22);
+            this.mnuCollegeAdd.Text = "College";
+            this.mnuCollegeAdd.Click += new System.EventHandler(this.employeeToolStripMenuItem_Click);
             // 
             // studentToolStripMenuItem
             // 
             this.studentToolStripMenuItem.Name = "studentToolStripMenuItem";
-            this.studentToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.studentToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.studentToolStripMenuItem.Text = "Employee";
             // 
             // collegeToolStripMenuItem
             // 
             this.collegeToolStripMenuItem.Name = "collegeToolStripMenuItem";
-            this.collegeToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.collegeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.collegeToolStripMenuItem.Text = "College Help";
             // 
             // filterToolStripMenuItem
             // 
             this.filterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.employeeToolStripMenuItem1,
-            this.collegeHelpToolStripMenuItem,
+            this.mnuCollegeFilter,
             this.employeeToolStripMenuItem2,
             this.collegeHelpToolStripMenuItem1});
             this.filterToolStripMenuItem.Name = "filterToolStripMenuItem";
@@ -115,25 +117,26 @@
             // employeeToolStripMenuItem1
             // 
             this.employeeToolStripMenuItem1.Name = "employeeToolStripMenuItem1";
-            this.employeeToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.employeeToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.employeeToolStripMenuItem1.Text = "All";
             // 
-            // collegeHelpToolStripMenuItem
+            // mnuCollegeFilter
             // 
-            this.collegeHelpToolStripMenuItem.Name = "collegeHelpToolStripMenuItem";
-            this.collegeHelpToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.collegeHelpToolStripMenuItem.Text = "Colleg";
+            this.mnuCollegeFilter.Name = "mnuCollegeFilter";
+            this.mnuCollegeFilter.Size = new System.Drawing.Size(152, 22);
+            this.mnuCollegeFilter.Text = "College";
+            this.mnuCollegeFilter.Click += new System.EventHandler(this.mnuCollegeFilter_Click);
             // 
             // employeeToolStripMenuItem2
             // 
             this.employeeToolStripMenuItem2.Name = "employeeToolStripMenuItem2";
-            this.employeeToolStripMenuItem2.Size = new System.Drawing.Size(142, 22);
+            this.employeeToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.employeeToolStripMenuItem2.Text = "Employee";
             // 
             // collegeHelpToolStripMenuItem1
             // 
             this.collegeHelpToolStripMenuItem1.Name = "collegeHelpToolStripMenuItem1";
-            this.collegeHelpToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.collegeHelpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.collegeHelpToolStripMenuItem1.Text = "College Help";
             // 
             // optionsToolStripMenuItem
@@ -148,14 +151,14 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -229,11 +232,24 @@
             this.mstat.Name = "mstat";
             this.mstat.ReadOnly = true;
             // 
+            // CollegeGridView1
+            // 
+            this.CollegeGridView1.AllowUserToAddRows = false;
+            this.CollegeGridView1.AllowUserToDeleteRows = false;
+            this.CollegeGridView1.AllowUserToOrderColumns = true;
+            this.CollegeGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CollegeGridView1.Location = new System.Drawing.Point(72, 72);
+            this.CollegeGridView1.Name = "CollegeGridView1";
+            this.CollegeGridView1.ReadOnly = true;
+            this.CollegeGridView1.Size = new System.Drawing.Size(713, 298);
+            this.CollegeGridView1.TabIndex = 2;
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1040, 434);
+            this.Controls.Add(this.CollegeGridView1);
             this.Controls.Add(this.GridView1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -246,6 +262,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mMPersonBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CollegeGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,11 +288,11 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.DataGridView GridView1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuCollegeAdd;
         private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem collegeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem collegeHelpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuCollegeFilter;
         private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem collegeHelpToolStripMenuItem1;
         private System.Windows.Forms.DataGridViewTextBoxColumn lname;
@@ -284,5 +301,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dob;
         private System.Windows.Forms.DataGridViewTextBoxColumn gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn mstat;
+        private System.Windows.Forms.DataGridView CollegeGridView1;
     }
 }

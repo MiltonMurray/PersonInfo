@@ -111,6 +111,7 @@
             this.Controls.Add(this.txtCName);
             this.Name = "CollegeForm";
             this.Text = "CollegeForm";
+            this.Load += new System.EventHandler(this.CollegeForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
