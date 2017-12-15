@@ -27,7 +27,8 @@ namespace MiltonTrainingProject
         
         private void MainForm_Load(object sender, EventArgs e)
         {          
-            GridView1.AddPersonToGrid(new Services().SelectAll());          
+            GridView1.AddPersonToGrid(new Services().SelectAll());
+            CollegeGridView1.AddCollegeToGrid(new CollegeService().SelectAll());
             currentGrid = GridView1;
            
 
@@ -36,8 +37,8 @@ namespace MiltonTrainingProject
         }
         public void refresh()
         {
-            GridView1.Rows.Clear();
-            GridView1.AddPersonToGrid(new Services().SelectAll());
+            currentGrid.Rows.Clear();
+            currentGrid.AddPersonToGrid(new Services().SelectAll());
         }
 
         private void gridEditLink()
@@ -47,7 +48,7 @@ namespace MiltonTrainingProject
             editLink.HeaderText = "Edit";
             editLink.Text = "Edit";
             editLink.UseColumnTextForLinkValue = true;
-            this.GridView1.Columns.Add(editLink);
+            this.currentGrid.Columns.Add(editLink);
         }
 
         private void gridDeleteLink()
@@ -57,7 +58,7 @@ namespace MiltonTrainingProject
             deleteLink.HeaderText = "Delete";
             deleteLink.Text = "Delete";
             deleteLink.UseColumnTextForLinkValue = true;
-            this.GridView1.Columns.Add(deleteLink);
+            this.currentGrid.Columns.Add(deleteLink);
         }
         
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,10 +110,23 @@ namespace MiltonTrainingProject
 
 
         }
-
+        private void HideGrids()
+        {
+            GridView1.Hide();
+            CollegeGridView1.Hide();
+        }
         private void mnuCollegeFilter_Click(object sender, EventArgs e)
         {
+            HideGrids();
+            CollegeGridView1.Show();
             currentGrid = CollegeGridView1;
+        }
+
+        private void employeeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            HideGrids();
+            GridView1.Show();
+            currentGrid = GridView1;
         }
     }
 }

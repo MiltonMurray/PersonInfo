@@ -37,6 +37,7 @@
             this.cbGender = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dPicker = new System.Windows.Forms.DateTimePicker();
+            this.collegeBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -77,7 +78,7 @@
             // cbMaritalStatus
             // 
             this.cbMaritalStatus.FormattingEnabled = true;
-            this.cbMaritalStatus.Location = new System.Drawing.Point(248, 134);
+            this.cbMaritalStatus.Location = new System.Drawing.Point(248, 114);
             this.cbMaritalStatus.Name = "cbMaritalStatus";
             this.cbMaritalStatus.Size = new System.Drawing.Size(100, 21);
             this.cbMaritalStatus.TabIndex = 8;
@@ -111,11 +112,20 @@
             this.dPicker.Size = new System.Drawing.Size(100, 20);
             this.dPicker.TabIndex = 17;
             // 
+            // collegeBox
+            // 
+            this.collegeBox.FormattingEnabled = true;
+            this.collegeBox.Location = new System.Drawing.Point(248, 152);
+            this.collegeBox.Name = "collegeBox";
+            this.collegeBox.Size = new System.Drawing.Size(121, 21);
+            this.collegeBox.TabIndex = 18;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(406, 248);
+            this.Controls.Add(this.collegeBox);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dPicker);
             this.Controls.Add(this.btnAdd);
@@ -142,5 +152,6 @@
         private System.Windows.Forms.ComboBox cbGender;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DateTimePicker dPicker;
+        private System.Windows.Forms.ComboBox collegeBox;
     }
 }

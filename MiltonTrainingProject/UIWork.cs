@@ -34,13 +34,45 @@ namespace MiltonTrainingProject
                 g.AddPersonToGrid(p);
             }
         }
-        public static void AddItemsToBox(this ComboBox cb, string[] names, int[] values)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="c"></param>
+        public static void AddCollegeToGrid(this DataGridView g, College c)
+        {
+            g.Rows[g.Rows.Add(c.Name, c.Street, c.City, Enum.GetName(typeof(State), c.State), c.Zip)].Tag = c.ID;
+        }
+
+        /// <summary>
+        /// Adds a Collection of Colleges to a Grid
+        /// </summary>
+        public static void AddCollegeToGrid(this DataGridView g, List<College> colleges)
+        {
+            foreach (College c in colleges)
+            {
+                g.AddCollegeToGrid(c);
+            }
+        }
+    
+    public static void AddItemsToBox(this ComboBox cb, string[] names, int[] values)
         {
             
             for (int i = 0; i < names.Length; i++)
             {
                 cb.Items.Add(new ComboBoxItem(names[i], values[i]));
                
+            }
+        }
+
+        /// <summary>
+        /// Adds list of colleges to a combobox
+        /// </summary>
+        public static void AddCollegesToBox(this ComboBox cb, List<College> collegeList)
+        {
+            foreach (College c in collegeList)
+            {
+                cb.Items.Add(c);
             }
         }
         public class ComboBoxItem

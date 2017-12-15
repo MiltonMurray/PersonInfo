@@ -33,7 +33,11 @@ namespace Models
             City = dr["City"].ToString();
             State = (State)Convert.ToInt32(dr["State"]);
             Zip = (int)dr["Zip"];
+           
         }
+
+       
+
         public College() { }
 
         public override string ToString()

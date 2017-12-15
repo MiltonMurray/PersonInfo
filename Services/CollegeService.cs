@@ -24,15 +24,15 @@ namespace PServices
 
         public List<College> SelectAll()
         {
-            List<College> collegeList = new List<College>();         
+            List<College> collegeList = new List<College>();           
             DataTable dt =  new CollegeData().SelectAll();
             foreach (DataRow row in dt.Rows)
-            {
+            {              
                 collegeList.Add(new College(row));
             }
             return collegeList;
         }
-
+        
         public void Update(College update)
         {
             new CollegeData().Update(update);

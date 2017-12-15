@@ -92,7 +92,7 @@ namespace MiltonTrainingProject
             string[] n = Enum.GetNames(typeof(Gender));         
             int[] v = (int[])Enum.GetValues(typeof(Gender));     
             cbGender.AddItemsToBox(n, v);
-
+            collegeBox.AddCollegesToBox(new CollegeService().SelectAll());
             n = Enum.GetNames(typeof(MaritalStatus));
             v = (int[])Enum.GetValues(typeof(MaritalStatus));
             cbMaritalStatus.AddItemsToBox(n, v);

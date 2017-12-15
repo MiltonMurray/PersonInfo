@@ -56,6 +56,11 @@
             this.mstat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mMPersonBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CollegeGridView1 = new System.Windows.Forms.DataGridView();
+            this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.street = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.city = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mMPersonBindingSource)).BeginInit();
@@ -87,20 +92,20 @@
             // mnuCollegeAdd
             // 
             this.mnuCollegeAdd.Name = "mnuCollegeAdd";
-            this.mnuCollegeAdd.Size = new System.Drawing.Size(152, 22);
+            this.mnuCollegeAdd.Size = new System.Drawing.Size(142, 22);
             this.mnuCollegeAdd.Text = "College";
             this.mnuCollegeAdd.Click += new System.EventHandler(this.employeeToolStripMenuItem_Click);
             // 
             // studentToolStripMenuItem
             // 
             this.studentToolStripMenuItem.Name = "studentToolStripMenuItem";
-            this.studentToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.studentToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.studentToolStripMenuItem.Text = "Employee";
             // 
             // collegeToolStripMenuItem
             // 
             this.collegeToolStripMenuItem.Name = "collegeToolStripMenuItem";
-            this.collegeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.collegeToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.collegeToolStripMenuItem.Text = "College Help";
             // 
             // filterToolStripMenuItem
@@ -117,26 +122,27 @@
             // employeeToolStripMenuItem1
             // 
             this.employeeToolStripMenuItem1.Name = "employeeToolStripMenuItem1";
-            this.employeeToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.employeeToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
             this.employeeToolStripMenuItem1.Text = "All";
+            this.employeeToolStripMenuItem1.Click += new System.EventHandler(this.employeeToolStripMenuItem1_Click);
             // 
             // mnuCollegeFilter
             // 
             this.mnuCollegeFilter.Name = "mnuCollegeFilter";
-            this.mnuCollegeFilter.Size = new System.Drawing.Size(152, 22);
+            this.mnuCollegeFilter.Size = new System.Drawing.Size(142, 22);
             this.mnuCollegeFilter.Text = "College";
             this.mnuCollegeFilter.Click += new System.EventHandler(this.mnuCollegeFilter_Click);
             // 
             // employeeToolStripMenuItem2
             // 
             this.employeeToolStripMenuItem2.Name = "employeeToolStripMenuItem2";
-            this.employeeToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.employeeToolStripMenuItem2.Size = new System.Drawing.Size(142, 22);
             this.employeeToolStripMenuItem2.Text = "Employee";
             // 
             // collegeHelpToolStripMenuItem1
             // 
             this.collegeHelpToolStripMenuItem1.Name = "collegeHelpToolStripMenuItem1";
-            this.collegeHelpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.collegeHelpToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
             this.collegeHelpToolStripMenuItem1.Text = "College Help";
             // 
             // optionsToolStripMenuItem
@@ -185,7 +191,7 @@
             this.gender,
             this.mstat});
             this.GridView1.GridColor = System.Drawing.SystemColors.Control;
-            this.GridView1.Location = new System.Drawing.Point(12, 38);
+            this.GridView1.Location = new System.Drawing.Point(0, 27);
             this.GridView1.MultiSelect = false;
             this.GridView1.Name = "GridView1";
             this.GridView1.ReadOnly = true;
@@ -236,13 +242,49 @@
             // 
             this.CollegeGridView1.AllowUserToAddRows = false;
             this.CollegeGridView1.AllowUserToDeleteRows = false;
-            this.CollegeGridView1.AllowUserToOrderColumns = true;
             this.CollegeGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CollegeGridView1.Location = new System.Drawing.Point(72, 72);
+            this.CollegeGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.c_name,
+            this.street,
+            this.city,
+            this.state,
+            this.zip});
+            this.CollegeGridView1.Location = new System.Drawing.Point(12, 27);
             this.CollegeGridView1.Name = "CollegeGridView1";
             this.CollegeGridView1.ReadOnly = true;
-            this.CollegeGridView1.Size = new System.Drawing.Size(713, 298);
+            this.CollegeGridView1.Size = new System.Drawing.Size(951, 395);
             this.CollegeGridView1.TabIndex = 2;
+            this.CollegeGridView1.Visible = false;
+            // 
+            // c_name
+            // 
+            this.c_name.HeaderText = "CollegeName";
+            this.c_name.Name = "c_name";
+            this.c_name.ReadOnly = true;
+            // 
+            // street
+            // 
+            this.street.HeaderText = "Street";
+            this.street.Name = "street";
+            this.street.ReadOnly = true;
+            // 
+            // city
+            // 
+            this.city.HeaderText = "City";
+            this.city.Name = "city";
+            this.city.ReadOnly = true;
+            // 
+            // state
+            // 
+            this.state.HeaderText = "State";
+            this.state.Name = "state";
+            this.state.ReadOnly = true;
+            // 
+            // zip
+            // 
+            this.zip.HeaderText = "Zip";
+            this.zip.Name = "zip";
+            this.zip.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -302,5 +344,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn mstat;
         private System.Windows.Forms.DataGridView CollegeGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn street;
+        private System.Windows.Forms.DataGridViewTextBoxColumn city;
+        private System.Windows.Forms.DataGridViewTextBoxColumn state;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zip;
     }
 }

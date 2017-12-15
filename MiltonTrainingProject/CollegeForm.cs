@@ -16,6 +16,7 @@ namespace MiltonTrainingProject
     {
         public College College { get; set; }
         public bool IsEdit {get; set; }
+        public bool IsChanged { get; set; }
         private MainForm mform;
        
         public CollegeForm(MainForm form)
@@ -81,6 +82,11 @@ namespace MiltonTrainingProject
                 MessageBox.Show(ex.Message);
                 return false;               
             }
+        }
+
+        private void CollegeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Data
         }
         public DataTable SelectAll()
         {
-            return GetData("dbo.usp_MM_Order_Person").Tables[0];
+            return GetData("dbo.usp_MM_Order_College").Tables[0];
         }
         public void Update(College c)
         {
@@ -33,14 +33,14 @@ namespace Data
         public List<SqlParameter> CollegeCo(College c)
         {
             List<SqlParameter> paramList = new List<SqlParameter>();          
-            paramList.Add(new SqlParameter("@CollegeName", SqlDbType.VarChar) { Value = c.Name });
+            paramList.Add(new SqlParameter("@Name", SqlDbType.VarChar) { Value = c.Name });
             paramList.Add(new SqlParameter("@Street", SqlDbType.VarChar) { Value = c.Street});
             paramList.Add(new SqlParameter("@City", SqlDbType.VarChar) { Value = c.City });
             paramList.Add(new SqlParameter("@State", SqlDbType.Int) { Value = c.State }); 
             paramList.Add(new SqlParameter("@Zip", SqlDbType.Int) { Value = c.Zip });
             if (c.ID > 0)
             {
-                paramList.Add(new SqlParameter("@ID", SqlDbType.Int) { Value = c.ID });
+                paramList.Add(new SqlParameter("@CollegeID", SqlDbType.Int) { Value = c.ID });
             }
             return paramList;
         }
