@@ -16,10 +16,10 @@ namespace MiltonTrainingProject
     public partial class Form1 : Form
     {        
         public bool isEdit { get; set; }
-        public Person Person { get; set; }
+        public PersonModel Person { get; set; }
         private MainForm mform;
 
-        public Form1(MainForm form, Person p = null)
+        public Form1(MainForm form, PersonModel p = null)
         {
             InitializeComponent();
             Person = p;
@@ -61,7 +61,7 @@ namespace MiltonTrainingProject
         {
             if (!isEdit)
             {
-                Person = new Person();
+                Person = new PersonModel();
             }
             try
             {
@@ -71,6 +71,7 @@ namespace MiltonTrainingProject
                 Person.SSN = int.Parse(txtSSN.Text);
                 Person.Gender = cbGender.Text.GetEnumFromString<Gender>();
                 Person.MaritalStatus = cbMaritalStatus.Text.GetEnumFromString<MaritalStatus>();
+               
 
                 return true;
             }

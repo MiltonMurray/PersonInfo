@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,13 +47,16 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.GridView1 = new System.Windows.Forms.DataGridView();
+            this.EmployeeGrid = new System.Windows.Forms.DataGridView();
             this.lname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ssn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dob = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mstat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateHired = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Department = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GymMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mMPersonBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CollegeGridView1 = new System.Windows.Forms.DataGridView();
             this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,7 +65,7 @@
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mMPersonBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CollegeGridView1)).BeginInit();
             this.SuspendLayout();
@@ -92,21 +95,23 @@
             // mnuCollegeAdd
             // 
             this.mnuCollegeAdd.Name = "mnuCollegeAdd";
-            this.mnuCollegeAdd.Size = new System.Drawing.Size(142, 22);
+            this.mnuCollegeAdd.Size = new System.Drawing.Size(152, 22);
             this.mnuCollegeAdd.Text = "College";
             this.mnuCollegeAdd.Click += new System.EventHandler(this.employeeToolStripMenuItem_Click);
             // 
             // studentToolStripMenuItem
             // 
             this.studentToolStripMenuItem.Name = "studentToolStripMenuItem";
-            this.studentToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.studentToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.studentToolStripMenuItem.Text = "Employee";
+            this.studentToolStripMenuItem.Click += new System.EventHandler(this.studentToolStripMenuItem_Click);
             // 
             // collegeToolStripMenuItem
             // 
             this.collegeToolStripMenuItem.Name = "collegeToolStripMenuItem";
-            this.collegeToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.collegeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.collegeToolStripMenuItem.Text = "College Help";
+            this.collegeToolStripMenuItem.Click += new System.EventHandler(this.collegeToolStripMenuItem_Click);
             // 
             // filterToolStripMenuItem
             // 
@@ -157,14 +162,14 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -173,34 +178,37 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // GridView1
+            // EmployeeGrid
             // 
-            this.GridView1.AllowUserToAddRows = false;
-            this.GridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.GridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.GridView1.BackgroundColor = System.Drawing.Color.DimGray;
-            this.GridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EmployeeGrid.AllowUserToAddRows = false;
+            this.EmployeeGrid.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.EmployeeGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.EmployeeGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.EmployeeGrid.BackgroundColor = System.Drawing.Color.DimGray;
+            this.EmployeeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.EmployeeGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.lname,
             this.fname,
             this.ssn,
             this.dob,
             this.gender,
-            this.mstat});
-            this.GridView1.GridColor = System.Drawing.SystemColors.Control;
-            this.GridView1.Location = new System.Drawing.Point(0, 27);
-            this.GridView1.MultiSelect = false;
-            this.GridView1.Name = "GridView1";
-            this.GridView1.ReadOnly = true;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.GridView1.ShowEditingIcon = false;
-            this.GridView1.Size = new System.Drawing.Size(1016, 384);
-            this.GridView1.TabIndex = 0;
-            this.GridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.mstat,
+            this.DateHired,
+            this.Department,
+            this.GymMember});
+            this.EmployeeGrid.GridColor = System.Drawing.SystemColors.Control;
+            this.EmployeeGrid.Location = new System.Drawing.Point(0, 27);
+            this.EmployeeGrid.MultiSelect = false;
+            this.EmployeeGrid.Name = "EmployeeGrid";
+            this.EmployeeGrid.ReadOnly = true;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmployeeGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.EmployeeGrid.ShowEditingIcon = false;
+            this.EmployeeGrid.Size = new System.Drawing.Size(1016, 384);
+            this.EmployeeGrid.TabIndex = 0;
+            this.EmployeeGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // lname
             // 
@@ -238,6 +246,24 @@
             this.mstat.Name = "mstat";
             this.mstat.ReadOnly = true;
             // 
+            // DateHired
+            // 
+            this.DateHired.HeaderText = "Date Hired";
+            this.DateHired.Name = "DateHired";
+            this.DateHired.ReadOnly = true;
+            // 
+            // Department
+            // 
+            this.Department.HeaderText = "Department";
+            this.Department.Name = "Department";
+            this.Department.ReadOnly = true;
+            // 
+            // GymMember
+            // 
+            this.GymMember.HeaderText = "GymMembership";
+            this.GymMember.Name = "GymMember";
+            this.GymMember.ReadOnly = true;
+            // 
             // CollegeGridView1
             // 
             this.CollegeGridView1.AllowUserToAddRows = false;
@@ -249,7 +275,7 @@
             this.city,
             this.state,
             this.zip});
-            this.CollegeGridView1.Location = new System.Drawing.Point(12, 27);
+            this.CollegeGridView1.Location = new System.Drawing.Point(0, 72);
             this.CollegeGridView1.Name = "CollegeGridView1";
             this.CollegeGridView1.ReadOnly = true;
             this.CollegeGridView1.Size = new System.Drawing.Size(951, 395);
@@ -292,7 +318,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1040, 434);
             this.Controls.Add(this.CollegeGridView1);
-            this.Controls.Add(this.GridView1);
+            this.Controls.Add(this.EmployeeGrid);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -302,7 +328,7 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mMPersonBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CollegeGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -328,7 +354,7 @@
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
-        private System.Windows.Forms.DataGridView GridView1;
+        private System.Windows.Forms.DataGridView EmployeeGrid;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuCollegeAdd;
         private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem;
@@ -337,17 +363,20 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCollegeFilter;
         private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem collegeHelpToolStripMenuItem1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ssn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dob;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mstat;
         private System.Windows.Forms.DataGridView CollegeGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn c_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn street;
         private System.Windows.Forms.DataGridViewTextBoxColumn city;
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
         private System.Windows.Forms.DataGridViewTextBoxColumn zip;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ssn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dob;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mstat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateHired;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Department;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GymMember;
     }
 }

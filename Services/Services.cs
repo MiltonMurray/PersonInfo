@@ -11,13 +11,13 @@ using Models;
 namespace PServices
 {
     //Buisness Access Layer
-    public class Services : IPersonInterface<Person>
+    public class Services : IPersonInterface<PersonModel>
     {
         /// <summary>
         /// Add Person
         /// </summary>
         /// <param name="p"></param>
-        public void Add(Person p)
+        public void Add(PersonModel p)
         {
             new PersonData().Add(p);
         }
@@ -26,7 +26,7 @@ namespace PServices
         /// Updates database
         /// </summary>
         /// <param name="p"></param>
-        public void Update(Person p)
+        public void Update(PersonModel p)
         {
             new PersonData().Update(p);
         }
@@ -35,13 +35,13 @@ namespace PServices
         /// Collects all the data into a list
         /// </summary>
         /// <returns></returns>
-        public List<Person> SelectAll()
+        public List<PersonModel> SelectAll()
         {
-            List<Person> personList = new List<Person>();
+            List<PersonModel> personList = new List<PersonModel>();
             DataTable dt = new PersonData().SelectAll();
             foreach (DataRow dr in dt.Rows)
             {
-                personList.Add(new Person(dr));
+                personList.Add(new PersonModel(dr));
             }
             return personList;
         }

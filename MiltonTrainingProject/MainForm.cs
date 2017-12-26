@@ -16,7 +16,6 @@ namespace MiltonTrainingProject
     public partial class MainForm : Form
     {
         Form1 form1;
-        CollegeForm cform;
         DataGridView currentGrid;  
         public DataGridView getGrid { get { return currentGrid; } }
 
@@ -27,9 +26,9 @@ namespace MiltonTrainingProject
         
         private void MainForm_Load(object sender, EventArgs e)
         {          
-            GridView1.AddPersonToGrid(new Services().SelectAll());
+            EmployeeGrid.AddPersonToGrid(new Services().SelectAll());
             CollegeGridView1.AddCollegeToGrid(new CollegeService().SelectAll());
-            currentGrid = GridView1;
+            currentGrid = EmployeeGrid;
            
 
             gridDeleteLink();
@@ -70,14 +69,14 @@ namespace MiltonTrainingProject
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Services data = new Services();
-            int id =Int32.Parse(GridView1.Rows[e.RowIndex].Tag.ToString());
-            string curr = GridView1.CurrentCell.Value.ToString();
+            int id =Int32.Parse(EmployeeGrid.Rows[e.RowIndex].Tag.ToString());
+            string curr = EmployeeGrid.CurrentCell.Value.ToString();
             
             if (curr == "Delete")
             {
                 try
                 {
-                    GridView1.Rows.RemoveAt(e.RowIndex);
+                    EmployeeGrid.Rows.RemoveAt(e.RowIndex);
                     data.Delete(id);
                 }
                 catch (Exception ex)
@@ -87,7 +86,7 @@ namespace MiltonTrainingProject
             }
             if (curr == "Edit")
             {
-                if (currentGrid == GridView1)
+                if (currentGrid == EmployeeGrid)
                 {
                     form1 = new Form1(this,currentGrid.Rows[e.RowIndex].GetPersonFromGrid());
                     form1.isEdit = true;
@@ -105,14 +104,13 @@ namespace MiltonTrainingProject
 
         private void employeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            cform = new CollegeForm(this);
+            CollegeForm cform = new CollegeForm(this);
             cform.Show();
-
 
         }
         private void HideGrids()
         {
-            GridView1.Hide();
+            EmployeeGrid.Hide();
             CollegeGridView1.Hide();
         }
         private void mnuCollegeFilter_Click(object sender, EventArgs e)
@@ -125,8 +123,21 @@ namespace MiltonTrainingProject
         private void employeeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             HideGrids();
-            GridView1.Show();
-            currentGrid = GridView1;
+            EmployeeGrid.Show();
+            currentGrid = EmployeeGrid;
+        }
+
+        private void collegeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StudentForm sForm = new StudentForm(this);
+            sForm.Show();
+
+        }
+
+        private void studentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmployeeForm eForm = new EmployeeForm(this);
+            eForm.Show();
         }
     }
 }

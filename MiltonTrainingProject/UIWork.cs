@@ -12,7 +12,7 @@ namespace MiltonTrainingProject
         /// <summary>
         /// Adds an Employee to a Grid
         /// </summary>
-        public static void AddPersonToGrid(this DataGridView g, Person p)
+        public static void AddPersonToGrid(this DataGridView g, PersonModel p)
         {
            
             g.Rows[g.Rows.Add(p.LastName, 
@@ -27,9 +27,9 @@ namespace MiltonTrainingProject
         /// <summary>
         /// Adds an Employee Collection to a Grid
         /// </summary>
-        public static void AddPersonToGrid(this DataGridView g, List<Person> person)
+        public static void AddPersonToGrid(this DataGridView g, List<PersonModel> person)
         {
-            foreach (Person p in person)
+            foreach (PersonModel p in person)
             {
                 g.AddPersonToGrid(p);
             }
@@ -91,9 +91,9 @@ namespace MiltonTrainingProject
                 Value = value;
             }
         }
-        public static Person GetPersonFromGrid(this DataGridViewRow row)
+        public static PersonModel GetPersonFromGrid(this DataGridViewRow row)
         {
-            Person p = new Person();
+            PersonModel p = new PersonModel();
             p.ID = (int)row.Tag;
             p.LastName = row.Cells[1].Value.ToString();
             p.FirstName = row.Cells[0].Value.ToString();           

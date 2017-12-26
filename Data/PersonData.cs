@@ -11,7 +11,7 @@ namespace Data
 {
     public class PersonData : DataBase
     {
-        public void Add(Person p)
+        public void Add(PersonModel p)
         {
             ExecuteProc("dbo.usp_MM_Insert", PersonCo(p));
         }
@@ -19,7 +19,7 @@ namespace Data
         {
            return GetData("dbo.usp_MM_Order_Person").Tables[0];
         }
-        public void Update (Person p)
+        public void Update (PersonModel p)
         {
             ExecuteProc("dbo.usp_MM_Update", PersonCo(p));
         }
@@ -35,7 +35,7 @@ namespace Data
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public List<SqlParameter> PersonCo(Person p)
+        public List<SqlParameter> PersonCo(PersonModel p)
         {
             List<SqlParameter> paramList = new List<SqlParameter>();
             paramList.Add(new SqlParameter("@FirstName", SqlDbType.VarChar) { Value = p.FirstName });
