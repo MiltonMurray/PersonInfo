@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -182,9 +182,9 @@
             // 
             this.EmployeeGrid.AllowUserToAddRows = false;
             this.EmployeeGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.EmployeeGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.EmployeeGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.EmployeeGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.EmployeeGrid.BackgroundColor = System.Drawing.Color.DimGray;
             this.EmployeeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -203,8 +203,8 @@
             this.EmployeeGrid.MultiSelect = false;
             this.EmployeeGrid.Name = "EmployeeGrid";
             this.EmployeeGrid.ReadOnly = true;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmployeeGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmployeeGrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.EmployeeGrid.ShowEditingIcon = false;
             this.EmployeeGrid.Size = new System.Drawing.Size(1016, 384);
             this.EmployeeGrid.TabIndex = 0;
@@ -275,10 +275,10 @@
             this.city,
             this.state,
             this.zip});
-            this.CollegeGridView1.Location = new System.Drawing.Point(0, 72);
+            this.CollegeGridView1.Location = new System.Drawing.Point(0, 27);
             this.CollegeGridView1.Name = "CollegeGridView1";
             this.CollegeGridView1.ReadOnly = true;
-            this.CollegeGridView1.Size = new System.Drawing.Size(951, 395);
+            this.CollegeGridView1.Size = new System.Drawing.Size(979, 395);
             this.CollegeGridView1.TabIndex = 2;
             this.CollegeGridView1.Visible = false;
             // 

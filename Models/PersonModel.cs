@@ -109,7 +109,7 @@ namespace Models
         public Member Member { get; set; }
 
         public Employee() { }
-        public Employee(DateTime date_hired, Department department, Member member)
+        public Employee(PersonModel p,DateTime date_hired, Department department, Member member) :base(p)
         {
             Date_hired = date_hired;
             Department = department;
@@ -123,11 +123,11 @@ namespace Models
             Member = e.Member;
         }
 
-        public Employee(DataRow dr)
+        public Employee(DataRow dr) : base(dr)
         {
             Date_hired = (DateTime)dr["Date Hired"];
             Department = (Department)dr["Department"];
-            Member = (Member)dr["Member"];
+            Member = (Member)dr["Gym Member"];
         }
 
     }

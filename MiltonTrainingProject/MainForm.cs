@@ -26,7 +26,9 @@ namespace MiltonTrainingProject
         
         private void MainForm_Load(object sender, EventArgs e)
         {          
-            EmployeeGrid.AddPersonToGrid(new Services().SelectAll());
+            EmployeeGrid.AddEmployeeToGrid(new EmployeeService().SelectAll());
+           // EmployeeGrid.AddPersonToGrid(new Services().SelectAll());
+            //StudentGrid.AddStudentToGrid(new StudentService().SelectAll());
             CollegeGridView1.AddCollegeToGrid(new CollegeService().SelectAll());
             currentGrid = EmployeeGrid;
            
@@ -35,9 +37,17 @@ namespace MiltonTrainingProject
             gridEditLink();
         }
         public void refresh()
-        {
+        {            
             currentGrid.Rows.Clear();
-            currentGrid.AddPersonToGrid(new Services().SelectAll());
+            if (currentGrid == EmployeeGrid)
+            {
+                currentGrid.AddEmployeeToGrid(new EmployeeService().SelectAll());
+            }
+            else
+            {
+                currentGrid.AddPersonToGrid(new Services().SelectAll());
+            }
+            
         }
 
         private void gridEditLink()

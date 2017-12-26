@@ -34,7 +34,13 @@ namespace Data
         public List<SqlParameter> StudentCo(Student s)
         {
             List<SqlParameter> paramList = new List<SqlParameter>();
-            paramList.Add(new SqlParameter("@College", SqlDbType.Int) { Value = s.College});
+            paramList.Add(new SqlParameter("@FirstName", SqlDbType.VarChar) { Value = s.FirstName });
+            paramList.Add(new SqlParameter("@LastName", SqlDbType.VarChar) { Value = s.LastName });
+            paramList.Add(new SqlParameter("@DOB", SqlDbType.Date) { Value = s.DOB });
+            paramList.Add(new SqlParameter("@SSN", SqlDbType.Int) { Value = s.SSN });
+            paramList.Add(new SqlParameter("@Gender", SqlDbType.Int) { Value = s.Gender });
+            paramList.Add(new SqlParameter("@MaritalStatus", SqlDbType.Int) { Value = s.MaritalStatus });
+            paramList.Add(new SqlParameter("@College", SqlDbType.VarChar) { Value = s.College});
             paramList.Add(new SqlParameter("@DateStarted", SqlDbType.Date) { Value = s.Date_start});
             paramList.Add(new SqlParameter("@CollegeYear", SqlDbType.Int) { Value = s.College_year });
             paramList.Add(new SqlParameter("@AverageHours", SqlDbType.Int) { Value = s.AvgHours });

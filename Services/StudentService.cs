@@ -9,7 +9,7 @@ using Data;
 
 namespace PServices
 {
-    class StudentService : Services, IPersonInterface<Student>
+    public class StudentService : IPersonInterface<Student>
     {
         public void Add(Student add)
         {
@@ -21,7 +21,7 @@ namespace PServices
             new StudentData().Update(update);
         }
 
-        List<Student> IPersonInterface<Student>.SelectAll()
+        public List<Student> SelectAll()
         {
             List<Student> studentList = new List<Student>();
             DataTable dt = new StudentData().SelectAll();
@@ -30,6 +30,11 @@ namespace PServices
                 studentList.Add(new Student(dr));
             }
             return studentList;
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

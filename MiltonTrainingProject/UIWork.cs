@@ -34,6 +34,48 @@ namespace MiltonTrainingProject
                 g.AddPersonToGrid(p);
             }
         }
+        public static void AddEmployeeToGrid(this DataGridView g, Employee e)
+        {
+            g.Rows[g.Rows.Add(e.LastName
+                                , e.FirstName
+                                , e.DOB.ToShortDateString()
+                                , e.SSN
+                                , Enum.GetName(typeof(Gender), e.Gender)
+                                , Enum.GetName(typeof(MaritalStatus), e.MaritalStatus)
+                                , e.Date_hired.ToShortDateString()
+                                , Enum.GetName(typeof(Department), e.Department)
+                                , Enum.GetName(typeof(Member), e.Member)
+                                )].Tag = e.ID;
+        }
+        public static void AddEmployeeToGrid(this DataGridView g, List<Employee> employee)
+        {
+            foreach (Employee e in employee)
+            {
+                g.AddEmployeeToGrid(e);
+            }
+        }
+        public static void AddStudentToGrid(this DataGridView g, Student s)
+        {
+            g.Rows[g.Rows.Add(s.LastName
+                                , s.FirstName
+                                , s.DOB.ToShortDateString()
+                                , s.SSN
+                                , Enum.GetName(typeof(Gender), s.Gender)
+                                , Enum.GetName(typeof(MaritalStatus), s.MaritalStatus)
+                                , s.College
+                                , s.AvgHours
+                                , Enum.GetName(typeof(CollegeYear), s.College_year)
+                                , s.Date_start.ToShortDateString()
+                                ,s.HasLoans.ToString() == "Yes"? true:false
+                                )].Tag = s.ID;
+        }
+        public static void AddStudentToGrid(this DataGridView g, List<Student> student)
+        {
+            foreach (Student s in student)
+            {
+                g.AddStudentToGrid(s);
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -103,5 +145,38 @@ namespace MiltonTrainingProject
             p.MaritalStatus = row.Cells[5].Value.ToString().GetEnumFromString<MaritalStatus>();            
             return p;
         }
+        public static Employee GetEmployeeFromGrid(this DataGridViewRow row)
+        {
+            Employee e = new Employee();
+            e.ID = (int)row.Tag;
+            e.LastName = row.Cells["Last Name"].Value.ToString();
+            e.FirstName = row.Cells[0].Value.ToString();
+            e.SSN = (int)row.Cells[3].Value;
+            e.DOB = Convert.ToDateTime(row.Cells[2].Value);
+            e.Gender = row.Cells[4].Value.ToString().GetEnumFromString<Gender>();
+            e.MaritalStatus = row.Cells[5].Value.ToString().GetEnumFromString<MaritalStatus>();
+            e.Date_hired = Convert.ToDateTime(row.Cells[6].Value);
+            e.Department = row.Cells[7].ToString().GetEnumFromString<Department>();
+            e.Member = row.Cells[8].ToString().GetEnumFromString<Member>();
+            return e;
+        }
+        public static Student GetStudentFromGrid(this DataGridViewRow row)
+        {
+            Student s = new Student();
+            s.ID = (int)row.Tag;
+            s.LastName = row.Cells[1].Value.ToString();
+            s.FirstName = row.Cells[0].Value.ToString();
+            s.SSN = (int)row.Cells[3].Value;
+            s.DOB = Convert.ToDateTime(row.Cells[2].Value);
+            s.Gender = row.Cells[4].Value.ToString().GetEnumFromString<Gender>();
+            s.MaritalStatus = row.Cells[5].Value.ToString().GetEnumFromString<MaritalStatus>();
+            s.College = (College)row.Cells[6].Value;
+            s.AvgHours = (int)row.Cells[7].Value;
+            s.College_year = row.Cells[8].ToString().GetEnumFromString<CollegeYear>();
+            s.Date_start = Convert.ToDateTime(row.Cells[9].Value);
+            s.HasLoans = row.Cells[10].ToString()=="Yes"?true:false;
+            return s;
+        }
+
     }
 }

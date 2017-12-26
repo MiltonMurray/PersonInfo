@@ -10,7 +10,6 @@ namespace Models
     {
         void Add(T add);
         void Delete(int id);
-        List<T> SelectAll();
         void Update(T update);
     }
 }

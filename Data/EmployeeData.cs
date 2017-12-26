@@ -13,7 +13,7 @@ namespace Data
     {
         public void Add(Employee e)
         {
-            ExecuteProc("dbo.usp_MM_Insert", EmployeeCo(e));
+            ExecuteProc("dbo.usp_MM_Insert_Em", EmployeeCo(e));
         }
         
         public void Update(Employee e)
@@ -23,8 +23,7 @@ namespace Data
 
         public DataTable SelectAllEmployees()
         {
-            //Not YET IMPLEMENTED
-            return null;
+            return GetData("dbo.usp_MM_sel_emp").Tables[0];          
         }
         /// <summary>
         /// Store Parameters
@@ -34,7 +33,13 @@ namespace Data
         public List<SqlParameter> EmployeeCo(Employee e)
         {
             List<SqlParameter> paramList = new List<SqlParameter>();
-            paramList.Add(new SqlParameter("@DateHird", SqlDbType.Date) { Value = e.Date_hired });
+            paramList.Add(new SqlParameter("@FirstName", SqlDbType.VarChar) { Value = e.FirstName });
+            paramList.Add(new SqlParameter("@LastName", SqlDbType.VarChar) { Value = e.LastName });
+            paramList.Add(new SqlParameter("@DOB", SqlDbType.Date) { Value = e.DOB });
+            paramList.Add(new SqlParameter("@SSN", SqlDbType.Int) { Value = e.SSN });
+            paramList.Add(new SqlParameter("@Gender", SqlDbType.Int) { Value = e.Gender });
+            paramList.Add(new SqlParameter("@MaritalStatus", SqlDbType.Int) { Value = e.MaritalStatus }); 
+            paramList.Add(new SqlParameter("@DateHired", SqlDbType.Date) { Value = e.Date_hired });
             paramList.Add(new SqlParameter("@Department", SqlDbType.Int) { Value = e.Department });
             paramList.Add(new SqlParameter("@GymMember", SqlDbType.Int) { Value = e.Member });
             

@@ -9,7 +9,7 @@ using System.Data;
 
 namespace PServices
 {
-    class EmployeeService : Services, IPersonInterface<Employee>
+    public class EmployeeService : IPersonInterface<Employee>
     {
         public void Add(Employee add)
         {
@@ -21,15 +21,20 @@ namespace PServices
             new EmployeeData().Update(update);
         }
 
-        List<Employee> IPersonInterface<Employee>.SelectAll()
+        public List<Employee> SelectAll()
         {
             List<Employee> empList = new List<Employee>();
-            DataTable dt = new EmployeeData().SelectAll();
+            DataTable dt = new EmployeeData().SelectAllEmployees();
             foreach (DataRow dr in dt.Rows)
             {
                 empList.Add(new Employee(dr));
             }
             return empList;
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -71,7 +71,24 @@ namespace MiltonTrainingProject
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+            EmployeeService serv = new EmployeeService();
 
+            if (Collect())
+            {
+                if (IsEdit)
+                {
+                    serv.Update(Employee);
+                    MessageBox.Show("Record updated successfully.");
+                    Close();
+                }
+                else
+                {
+                    serv.Add(Employee);
+                    MessageBox.Show("New record inserted successfully.");
+                    Close();
+                }
+                MainForm.refresh();
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
