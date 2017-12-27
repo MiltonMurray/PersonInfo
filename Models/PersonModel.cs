@@ -56,11 +56,7 @@ namespace Models
     }
 
    public class Student : PersonModel
-    {
-        public int StuID {
-             get { return StuID; }
-             set { StuID = ID; }
-        }
+    {    
         public College College { get; set; }
         public DateTime Date_start { get; set; }
         public CollegeYear College_year { get; set; }
@@ -68,7 +64,7 @@ namespace Models
         public bool HasLoans { get; set; }
 
         public Student() { }
-        public Student(College college, DateTime date_start, CollegeYear college_year, int avgHours, bool hasLoans)
+        public Student( PersonModel p, College college, DateTime date_start, CollegeYear college_year, int avgHours, bool hasLoans) :base(p)
         {
             College = college;
             Date_start = date_start;
@@ -86,9 +82,9 @@ namespace Models
             HasLoans = s.HasLoans;
         }
 
-        public Student(DataRow dr)
+        public Student(DataRow dr) : base(dr)
         {
-            College = (College)dr["College"];
+            College = new College() { ID = (int)dr["College"], Name = dr["College"].ToString() };
             Date_start = (DateTime)dr["Date Started"];
             College_year = (CollegeYear)dr["College Year"];
             AvgHours = (int)dr["Average hours"];
@@ -98,18 +94,13 @@ namespace Models
 
     }
     public class Employee : PersonModel
-    {
-        public int EmpID
-        {
-            get { return EmpID; }
-            set { EmpID = ID; }
-        }
+    {       
         public DateTime Date_hired { get; set; }
         public Department Department { get; set; }
         public Member Member { get; set; }
 
         public Employee() { }
-        public Employee(PersonModel p,DateTime date_hired, Department department, Member member) :base(p)
+        public Employee( PersonModel p,DateTime date_hired, Department department, Member member) :base(p)
         {
             Date_hired = date_hired;
             Department = department;

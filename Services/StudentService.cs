@@ -24,7 +24,7 @@ namespace PServices
         public List<Student> SelectAll()
         {
             List<Student> studentList = new List<Student>();
-            DataTable dt = new StudentData().SelectAll();
+            DataTable dt = new StudentData().SelectAllStudents();
             foreach (DataRow dr in dt.Rows)
             {
                 studentList.Add(new Student(dr));
@@ -32,9 +32,9 @@ namespace PServices
             return studentList;
         }
 
-        public void Delete(int id)
+        public void Delete(Student s, int id)
         {
-            throw new NotImplementedException();
+            new StudentData().Delete(s, id);
         }
     }
 }

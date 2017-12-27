@@ -149,15 +149,15 @@ namespace MiltonTrainingProject
         {
             Employee e = new Employee();
             e.ID = (int)row.Tag;
-            e.LastName = row.Cells["Last Name"].Value.ToString();
+            e.LastName = row.Cells[1].Value.ToString();
             e.FirstName = row.Cells[0].Value.ToString();
             e.SSN = (int)row.Cells[3].Value;
             e.DOB = Convert.ToDateTime(row.Cells[2].Value);
             e.Gender = row.Cells[4].Value.ToString().GetEnumFromString<Gender>();
             e.MaritalStatus = row.Cells[5].Value.ToString().GetEnumFromString<MaritalStatus>();
             e.Date_hired = Convert.ToDateTime(row.Cells[6].Value);
-            e.Department = row.Cells[7].ToString().GetEnumFromString<Department>();
-            e.Member = row.Cells[8].ToString().GetEnumFromString<Member>();
+            e.Department = row.Cells[7].Value.ToString().GetEnumFromString<Department>();
+            e.Member = row.Cells[8].Value.ToString().GetEnumFromString<Member>();
             return e;
         }
         public static Student GetStudentFromGrid(this DataGridViewRow row)

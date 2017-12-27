@@ -14,17 +14,23 @@ namespace Data
     {
         public void Add(Student s)
         {
-            ExecuteProc("dbo.usp_MM_Insert", StudentCo(s));
+            ExecuteProc("dbo.usp_MM_Insert_Stu", StudentCo(s));
         }
 
         public void Update(Student s)
         {
-            ExecuteProc("dbo.usp_MM_Update", StudentCo(s));
+            ExecuteProc("dbo.usp_MM_Upd_Stu", StudentCo(s));
+        }
+
+        public void Delete(Student s, int id)
+        {
+            List<SqlParameter> paramList = new List<SqlParameter>();
+            paramList.Add(new SqlParameter("@ID", SqlDbType.Int) { Value = id });
+            ExecuteProc("dbo.usp_MM_Del_Stu", paramList);
         }
         public DataTable SelectAllStudents()
         {
-            //Not YET IMPLEMENTED
-            return null;
+            return GetData("dbo.usp_MM_sel_stu").Tables[0];
         }
         /// <summary>
         /// Store Parameters
@@ -48,7 +54,7 @@ namespace Data
 
             if (s.ID > 0)
             {
-                paramList.Add(new SqlParameter("@StuID", SqlDbType.Int) { Value = s.StuID });
+                paramList.Add(new SqlParameter("@ID", SqlDbType.Int) { Value = s.ID });
             }
             return paramList;
         }

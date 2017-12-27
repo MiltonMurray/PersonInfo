@@ -67,6 +67,20 @@ namespace MiltonTrainingProject
             n = Enum.GetNames(typeof(Member));
             v = (int[])Enum.GetValues(typeof(Member));
             cbMembership.AddItemsToBox(n, v);
+
+            if (Employee != null)
+            {
+                txtLastName.Text = Employee.LastName;
+                txtFirstName.Text = Employee.FirstName;
+                cbDepartment.Text = Enum.GetName(typeof(Department), Employee.Department);
+                cbGender.Text = Enum.GetName(typeof(Gender), Employee.Gender);
+                cbMembership.Text = Enum.GetName(typeof(Member), Employee.Member);
+                cbMaritalStatus.Text = Enum.GetName(typeof(MaritalStatus), Employee.MaritalStatus);               
+                dtDOB.Text = Employee.DOB.ToShortDateString();
+                dtDateHired.Text = Employee.Date_hired.ToShortDateString();
+                txtSSN.Text = Employee.SSN.ToString();
+            }
+
         }
 
         private void btnAccept_Click(object sender, EventArgs e)

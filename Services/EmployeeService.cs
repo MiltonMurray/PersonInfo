@@ -32,9 +32,9 @@ namespace PServices
             return empList;
         }
 
-        public void Delete(int id)
+        public void Delete(Employee e, int id)
         {
-            throw new NotImplementedException();
+            new EmployeeData().Delete(e,id);
         }
     }
 }

@@ -18,9 +18,15 @@ namespace Data
         
         public void Update(Employee e)
         {
-            ExecuteProc("dbo.usp_MM_Update", EmployeeCo(e));
-        }        
+            ExecuteProc("dbo.usp_MM_Upd_Emp", EmployeeCo(e));
+        }
 
+        public void Delete(Employee e, int id)
+        {
+            List<SqlParameter> paramList = new List<SqlParameter>();
+            paramList.Add(new SqlParameter("@ID", SqlDbType.Int) { Value = id });
+            ExecuteProc("dbo.usp_MM_Del_Emp", paramList);
+        }
         public DataTable SelectAllEmployees()
         {
             return GetData("dbo.usp_MM_sel_emp").Tables[0];          
@@ -45,7 +51,7 @@ namespace Data
             
             if (e.ID > 0)
             {
-                paramList.Add(new SqlParameter("@EmpID", SqlDbType.Int) { Value = e.EmpID });
+                paramList.Add(new SqlParameter("@ID", SqlDbType.Int) { Value = e.ID });
             }
             return paramList;
         }

@@ -27,14 +27,13 @@ namespace MiltonTrainingProject
         private void MainForm_Load(object sender, EventArgs e)
         {          
             EmployeeGrid.AddEmployeeToGrid(new EmployeeService().SelectAll());
-           // EmployeeGrid.AddPersonToGrid(new Services().SelectAll());
-            //StudentGrid.AddStudentToGrid(new StudentService().SelectAll());
-            CollegeGridView1.AddCollegeToGrid(new CollegeService().SelectAll());
-            currentGrid = EmployeeGrid;
            
+            StudentGrid.AddStudentToGrid(new StudentService().SelectAll());
+            CollegeGrid.AddCollegeToGrid(new CollegeService().SelectAll());
+            currentGrid = EmployeeGrid;
 
-            gridDeleteLink();
             gridEditLink();
+            gridDeleteLink();
         }
         public void refresh()
         {            
@@ -49,27 +48,31 @@ namespace MiltonTrainingProject
             }
             
         }
-
+       
         private void gridEditLink()
         {
             var editLink = new DataGridViewLinkColumn();
-            editLink.Name = "dataEdit";
+            editLink.Name = "Edit";
             editLink.HeaderText = "Edit";
             editLink.Text = "Edit";
             editLink.UseColumnTextForLinkValue = true;
+          
             this.currentGrid.Columns.Add(editLink);
+        
         }
 
         private void gridDeleteLink()
         {
             var deleteLink = new DataGridViewLinkColumn();
-            deleteLink.Name = "dataDelete";
+            deleteLink.Name = "Delete";
             deleteLink.HeaderText = "Delete";
             deleteLink.Text = "Delete";
             deleteLink.UseColumnTextForLinkValue = true;
+           
             this.currentGrid.Columns.Add(deleteLink);
+              
         }
-        
+
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             form1 = new Form1(this);
@@ -77,30 +80,48 @@ namespace MiltonTrainingProject
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Services data = new Services();
-            int id =Int32.Parse(EmployeeGrid.Rows[e.RowIndex].Tag.ToString());
-            string curr = EmployeeGrid.CurrentCell.Value.ToString();
+        {           
+            int id =Int32.Parse(currentGrid.Rows[e.RowIndex].Tag.ToString());
+            string curr = currentGrid.CurrentCell.Value.ToString();
             
             if (curr == "Delete")
             {
                 try
                 {
-                    EmployeeGrid.Rows.RemoveAt(e.RowIndex);
-                    data.Delete(id);
+                    if (currentGrid == EmployeeGrid)
+                    {
+                        Employee emp = new Employee();
+                        EmployeeService data = new EmployeeService();
+                        data.Delete(emp,id);
+                    }
+                    else if (currentGrid == StudentGrid)
+                    {
+                        Student stu = new Student();
+                        StudentService data = new StudentService();
+                        data.Delete(stu, id);
+                    }
+
+
+                    this.refresh();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Something Happend");
+                    MessageBox.Show(ex.Message);
                 }
             }
             if (curr == "Edit")
             {
                 if (currentGrid == EmployeeGrid)
                 {
-                    form1 = new Form1(this,currentGrid.Rows[e.RowIndex].GetPersonFromGrid());
-                    form1.isEdit = true;
-                    form1.ShowDialog();                                 
+                    EmployeeForm emp = new EmployeeForm(this,currentGrid.Rows[e.RowIndex].GetEmployeeFromGrid());
+                    emp.IsEdit = true;
+                    emp.ShowDialog();
+                }
+                else
+                {
+                    StudentForm std = new StudentForm(this, currentGrid.Rows[e.RowIndex].GetStudentFromGrid());
+                    std.IsEdit = true;
+                    std.ShowDialog();
                 }
                                                       
             }
@@ -120,21 +141,15 @@ namespace MiltonTrainingProject
         }
         private void HideGrids()
         {
+            StudentGrid.Hide();
             EmployeeGrid.Hide();
-            CollegeGridView1.Hide();
+            CollegeGrid.Hide();
         }
         private void mnuCollegeFilter_Click(object sender, EventArgs e)
         {
             HideGrids();
-            CollegeGridView1.Show();
-            currentGrid = CollegeGridView1;
-        }
-
-        private void employeeToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            HideGrids();
-            EmployeeGrid.Show();
-            currentGrid = EmployeeGrid;
+            CollegeGrid.Show();
+            currentGrid = CollegeGrid;
         }
 
         private void collegeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -149,5 +164,30 @@ namespace MiltonTrainingProject
             EmployeeForm eForm = new EmployeeForm(this);
             eForm.Show();
         }
+
+        private void employeeToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            HideGrids();
+            EmployeeGrid.Show();
+            currentGrid = EmployeeGrid;
+           
+        }
+
+        private void collegeHelpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            HideGrids();
+            StudentGrid.Show();
+            currentGrid = StudentGrid;
+
+
+            if (!(this.currentGrid.Columns.Contains("Edit")))
+            {
+                gridEditLink();
+                gridDeleteLink();
+            }
+
+        }
+        private void employeeToolStripMenuItem1_Click(object sender, EventArgs e) { }
+      
     }
 }
