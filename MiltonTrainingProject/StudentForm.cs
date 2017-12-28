@@ -80,7 +80,7 @@ namespace MiltonTrainingProject
                 dtStarted.Text = Student.Date_start.ToShortDateString();
                 cbYear.Text = Enum.GetName(typeof(CollegeYear), Student.College_year);
                 txtAvrgHours.Text = Student.AvgHours.ToString();
-                cbHasLoans.Checked = Student.HasLoans;
+                cbHasLoans.Checked = Student.HasLoans ;
             }
         }
 

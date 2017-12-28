@@ -66,7 +66,7 @@ namespace MiltonTrainingProject
                                 , s.AvgHours
                                 , Enum.GetName(typeof(CollegeYear), s.College_year)
                                 , s.Date_start.ToShortDateString()
-                                ,s.HasLoans.ToString() == "Yes"? true:false
+                                , s.HasLoans == true ? "Yes" : "No"
                                 )].Tag = s.ID;
         }
         public static void AddStudentToGrid(this DataGridView g, List<Student> student)
@@ -172,9 +172,10 @@ namespace MiltonTrainingProject
             s.MaritalStatus = row.Cells[5].Value.ToString().GetEnumFromString<MaritalStatus>();
             s.College = (College)row.Cells[6].Value;
             s.AvgHours = (int)row.Cells[7].Value;
-            s.College_year = row.Cells[8].ToString().GetEnumFromString<CollegeYear>();
+            s.College_year = row.Cells[8].Value.ToString().GetEnumFromString<CollegeYear>();
             s.Date_start = Convert.ToDateTime(row.Cells[9].Value);
-            s.HasLoans = row.Cells[10].ToString()=="Yes"?true:false;
+            //MessageBox.Show((row.Cells[10].Value.ToString() == "Yes"? true:false).ToString());
+            s.HasLoans = row.Cells[10].Value.ToString() == "Yes" ? true : false;
             return s;
         }
 

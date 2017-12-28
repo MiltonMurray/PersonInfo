@@ -46,11 +46,11 @@ namespace Data
             paramList.Add(new SqlParameter("@SSN", SqlDbType.Int) { Value = s.SSN });
             paramList.Add(new SqlParameter("@Gender", SqlDbType.Int) { Value = s.Gender });
             paramList.Add(new SqlParameter("@MaritalStatus", SqlDbType.Int) { Value = s.MaritalStatus });
-            paramList.Add(new SqlParameter("@College", SqlDbType.VarChar) { Value = s.College});
+            paramList.Add(new SqlParameter("@College", SqlDbType.VarChar) { Value = s.College.ToString()});
             paramList.Add(new SqlParameter("@DateStarted", SqlDbType.Date) { Value = s.Date_start});
             paramList.Add(new SqlParameter("@CollegeYear", SqlDbType.Int) { Value = s.College_year });
             paramList.Add(new SqlParameter("@AverageHours", SqlDbType.Int) { Value = s.AvgHours });
-            paramList.Add(new SqlParameter("@HasLoans", SqlDbType.Bit) { Value = s.HasLoans });
+            paramList.Add(new SqlParameter("@HasLoans", SqlDbType.Bit) { Value = s.HasLoans});
 
             if (s.ID > 0)
             {

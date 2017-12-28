@@ -84,7 +84,7 @@ namespace Models
 
         public Student(DataRow dr) : base(dr)
         {
-            College = new College() { ID = (int)dr["College"], Name = dr["College"].ToString() };
+            College = new College() { Name = dr["College"].ToString() };
             Date_start = (DateTime)dr["Date Started"];
             College_year = (CollegeYear)dr["College Year"];
             AvgHours = (int)dr["Average hours"];

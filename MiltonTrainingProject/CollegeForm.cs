@@ -56,9 +56,9 @@ namespace MiltonTrainingProject
                 {
                     serv.Add(College);
                     MessageBox.Show("New record inserted successfully.");
+                    mform.refresh();
                     Close();
-                }
-                mform.refresh();
+                }                
             }
         }
         public bool collect()
