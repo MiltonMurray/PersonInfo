@@ -24,7 +24,30 @@ namespace Data
         {
             return new SqlConnection(connStr);
         }
-     
+        protected static DataSet GetData(string proc, List<SqlParameter> paramList)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                using (SqlConnection conn = GetSqlConnection())
+                {
+                    SqlCommand cmd = new SqlCommand(proc, conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    foreach (SqlParameter p in paramList)
+                    {
+                        cmd.Parameters.Add(p.ParameterName, p.SqlDbType).Value = p.Value;
+                    }
+                    conn.Open();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(ds);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            return ds;
+        }
         /// <summary>
         /// Load all records from database
         /// </summary>

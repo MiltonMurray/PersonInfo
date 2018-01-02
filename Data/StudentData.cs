@@ -28,6 +28,15 @@ namespace Data
             paramList.Add(new SqlParameter("@ID", SqlDbType.Int) { Value = id });
             ExecuteProc("dbo.usp_MM_Del_Stu", paramList);
         }
+        public DataTable Attendance(string name)
+        {
+            List<SqlParameter> paramList = new List<SqlParameter>();
+            paramList.Add(new SqlParameter("@CollegeName", SqlDbType.VarChar) { Value = name });
+
+
+            return GetData("dbo.usp_MM_CollegeAttendance", paramList).Tables[0];
+
+        }
         public DataTable SelectAllStudents()
         {
             return GetData("dbo.usp_MM_sel_stu").Tables[0];

@@ -30,12 +30,28 @@ namespace PServices
             {
                 studentList.Add(new Student(dr));              
             }
-           
 
             return studentList;
         }
+        public bool Attended(string name)
+        {
+            DataTable dt = new StudentData().Attendance(name);
+            int count = 0;
+            foreach (DataRow dr in dt.Rows)
+            {
+                count = (int)dr[0];
+            }
 
-       
+            if (count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void Delete(Student s, int id)
         {
             new StudentData().Delete(s, id);

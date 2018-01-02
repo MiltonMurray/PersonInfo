@@ -32,8 +32,8 @@ namespace Data
             
             ExecuteProc("dbo.usp_MM_Del_Col", paramList);
         }
+       
 
-        
         public List<SqlParameter> CollegeCo(College c)
         {
             List<SqlParameter> paramList = new List<SqlParameter>();          

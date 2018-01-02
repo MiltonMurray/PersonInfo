@@ -53,17 +53,21 @@ namespace MiltonTrainingProject
 
             if (currentGrid == EmployeeGrid)
             {
-                currentGrid.AddEmployeeToGrid(new EmployeeService().SelectAll());
+                currentGrid.AddEmployeeToGrid(new EmployeeService().SelectAll());               
+                AllGrid.Rows.Clear();
+                AllGrid.AddPersonToGrid(new Services().SelectAll());
             }
             else if (currentGrid == StudentGrid)
             {
-                currentGrid.AddStudentToGrid(new StudentService().SelectAll());
+                currentGrid.AddStudentToGrid(new StudentService().SelectAll());              
+                AllGrid.Rows.Clear();
+                AllGrid.AddPersonToGrid(new Services().SelectAll());
             }
             else
             {
                 currentGrid.AddCollegeToGrid(new CollegeService().SelectAll());
                 StudentGrid.Rows.Clear();
-                StudentGrid.AddStudentToGrid(new StudentService().SelectAll());
+                StudentGrid.AddStudentToGrid(new StudentService().SelectAll());            
             }
 
         }
@@ -166,11 +170,20 @@ namespace MiltonTrainingProject
             {
                 try
                 {
-                    College c = new College();
-                    CollegeService data = new CollegeService();
-                    data.Delete(id);
+                    StudentService s = new StudentService();
+                    if (s.Attended(name))
+                    {
+                        MessageBox.Show("College is being used");
+                    }
+                    else
+                    {
+                        College c = new College();
+                        CollegeService data = new CollegeService();
+                        data.Delete(id);
 
-                    this.refresh();
+                        this.refresh();
+                    }
+                    
                 }
 
                 catch (Exception ex)
