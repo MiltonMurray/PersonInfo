@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,15 +47,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.EmployeeGrid = new System.Windows.Forms.DataGridView();
-            this.lname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ssn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dob = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mstat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateHired = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Department = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GymMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mMPersonBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CollegeGrid = new System.Windows.Forms.DataGridView();
             this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,17 +55,6 @@
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentGrid = new System.Windows.Forms.DataGridView();
-            this.stFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stSSN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stDOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stMaritalStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stCollege = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stDateStarted = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stCollegeYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stAvgHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stHasLoans = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AllGrid = new System.Windows.Forms.DataGridView();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,6 +62,26 @@
             this.aDOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aMaritalStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dob = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ssn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mstat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateHired = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Department = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GymMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stDOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stSSN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stMaritalStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stCollege = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stDateStarted = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stCollegeYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stAvgHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stHasLoans = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mMPersonBindingSource)).BeginInit();
@@ -183,7 +183,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -196,17 +196,18 @@
             // 
             this.EmployeeGrid.AllowUserToAddRows = false;
             this.EmployeeGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.EmployeeGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.EmployeeGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.EmployeeGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.EmployeeGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.EmployeeGrid.BackgroundColor = System.Drawing.Color.DimGray;
             this.EmployeeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.EmployeeGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.lname,
             this.fname,
-            this.ssn,
+            this.lname,
             this.dob,
+            this.ssn,
             this.gender,
             this.mstat,
             this.DateHired,
@@ -217,71 +218,19 @@
             this.EmployeeGrid.MultiSelect = false;
             this.EmployeeGrid.Name = "EmployeeGrid";
             this.EmployeeGrid.ReadOnly = true;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmployeeGrid.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmployeeGrid.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.EmployeeGrid.ShowEditingIcon = false;
             this.EmployeeGrid.Size = new System.Drawing.Size(1138, 408);
             this.EmployeeGrid.TabIndex = 0;
             this.EmployeeGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // lname
-            // 
-            this.lname.HeaderText = "Last Name";
-            this.lname.Name = "lname";
-            this.lname.ReadOnly = true;
-            // 
-            // fname
-            // 
-            this.fname.HeaderText = "First Name";
-            this.fname.Name = "fname";
-            this.fname.ReadOnly = true;
-            // 
-            // ssn
-            // 
-            this.ssn.HeaderText = "Social Security #";
-            this.ssn.Name = "ssn";
-            this.ssn.ReadOnly = true;
-            // 
-            // dob
-            // 
-            this.dob.HeaderText = "Date of Birth";
-            this.dob.Name = "dob";
-            this.dob.ReadOnly = true;
-            // 
-            // gender
-            // 
-            this.gender.HeaderText = "Gender";
-            this.gender.Name = "gender";
-            this.gender.ReadOnly = true;
-            // 
-            // mstat
-            // 
-            this.mstat.HeaderText = "Marital Status";
-            this.mstat.Name = "mstat";
-            this.mstat.ReadOnly = true;
-            // 
-            // DateHired
-            // 
-            this.DateHired.HeaderText = "Date Hired";
-            this.DateHired.Name = "DateHired";
-            this.DateHired.ReadOnly = true;
-            // 
-            // Department
-            // 
-            this.Department.HeaderText = "Department";
-            this.Department.Name = "Department";
-            this.Department.ReadOnly = true;
-            // 
-            // GymMember
-            // 
-            this.GymMember.HeaderText = "GymMembership";
-            this.GymMember.Name = "GymMember";
-            this.GymMember.ReadOnly = true;
-            // 
             // CollegeGrid
             // 
             this.CollegeGrid.AllowUserToAddRows = false;
             this.CollegeGrid.AllowUserToDeleteRows = false;
+            this.CollegeGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.CollegeGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.CollegeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CollegeGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.c_name,
@@ -289,53 +238,61 @@
             this.city,
             this.state,
             this.zip});
-            this.CollegeGrid.Location = new System.Drawing.Point(-18, 27);
+            this.CollegeGrid.Location = new System.Drawing.Point(0, 27);
             this.CollegeGrid.Name = "CollegeGrid";
             this.CollegeGrid.ReadOnly = true;
             this.CollegeGrid.Size = new System.Drawing.Size(1156, 408);
             this.CollegeGrid.TabIndex = 2;
             this.CollegeGrid.Visible = false;
+            this.CollegeGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CollegeGrid_CellContentClick);
             // 
             // c_name
             // 
             this.c_name.HeaderText = "CollegeName";
             this.c_name.Name = "c_name";
             this.c_name.ReadOnly = true;
+            this.c_name.Width = 121;
             // 
             // street
             // 
             this.street.HeaderText = "Street";
             this.street.Name = "street";
             this.street.ReadOnly = true;
+            this.street.Width = 72;
             // 
             // city
             // 
             this.city.HeaderText = "City";
             this.city.Name = "city";
             this.city.ReadOnly = true;
+            this.city.Width = 59;
             // 
             // state
             // 
             this.state.HeaderText = "State";
             this.state.Name = "state";
             this.state.ReadOnly = true;
+            this.state.Width = 67;
             // 
             // zip
             // 
             this.zip.HeaderText = "Zip";
             this.zip.Name = "zip";
             this.zip.ReadOnly = true;
+            this.zip.Width = 54;
             // 
             // StudentGrid
             // 
             this.StudentGrid.AllowUserToAddRows = false;
             this.StudentGrid.AllowUserToDeleteRows = false;
+            this.StudentGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.StudentGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.StudentGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StudentGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.stFirstName,
             this.stLastName,
-            this.stSSN,
             this.stDOB,
+            this.stSSN,
             this.stGender,
             this.stMaritalStatus,
             this.stCollege,
@@ -350,72 +307,6 @@
             this.StudentGrid.TabIndex = 3;
             this.StudentGrid.Visible = false;
             this.StudentGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentGrid_CellContentClick);
-            // 
-            // stFirstName
-            // 
-            this.stFirstName.HeaderText = "First Name";
-            this.stFirstName.Name = "stFirstName";
-            this.stFirstName.ReadOnly = true;
-            // 
-            // stLastName
-            // 
-            this.stLastName.HeaderText = "Last Name";
-            this.stLastName.Name = "stLastName";
-            this.stLastName.ReadOnly = true;
-            // 
-            // stSSN
-            // 
-            this.stSSN.HeaderText = "Social Security #";
-            this.stSSN.Name = "stSSN";
-            this.stSSN.ReadOnly = true;
-            // 
-            // stDOB
-            // 
-            this.stDOB.HeaderText = "Date of Birth";
-            this.stDOB.Name = "stDOB";
-            this.stDOB.ReadOnly = true;
-            // 
-            // stGender
-            // 
-            this.stGender.HeaderText = "Gender";
-            this.stGender.Name = "stGender";
-            this.stGender.ReadOnly = true;
-            // 
-            // stMaritalStatus
-            // 
-            this.stMaritalStatus.HeaderText = "Marital Status";
-            this.stMaritalStatus.Name = "stMaritalStatus";
-            this.stMaritalStatus.ReadOnly = true;
-            // 
-            // stCollege
-            // 
-            this.stCollege.HeaderText = "College";
-            this.stCollege.Name = "stCollege";
-            this.stCollege.ReadOnly = true;
-            // 
-            // stDateStarted
-            // 
-            this.stDateStarted.HeaderText = "Start Date";
-            this.stDateStarted.Name = "stDateStarted";
-            this.stDateStarted.ReadOnly = true;
-            // 
-            // stCollegeYear
-            // 
-            this.stCollegeYear.HeaderText = "College Year";
-            this.stCollegeYear.Name = "stCollegeYear";
-            this.stCollegeYear.ReadOnly = true;
-            // 
-            // stAvgHours
-            // 
-            this.stAvgHours.HeaderText = "Average Hours";
-            this.stAvgHours.Name = "stAvgHours";
-            this.stAvgHours.ReadOnly = true;
-            // 
-            // stHasLoans
-            // 
-            this.stHasLoans.HeaderText = "Has Loans";
-            this.stHasLoans.Name = "stHasLoans";
-            this.stHasLoans.ReadOnly = true;
             // 
             // AllGrid
             // 
@@ -435,6 +326,7 @@
             this.AllGrid.Size = new System.Drawing.Size(1138, 408);
             this.AllGrid.TabIndex = 4;
             this.AllGrid.Visible = false;
+            this.AllGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AllGrid_CellContentClick);
             // 
             // FirstName
             // 
@@ -471,6 +363,146 @@
             this.aMaritalStatus.HeaderText = "Marital Status";
             this.aMaritalStatus.Name = "aMaritalStatus";
             this.aMaritalStatus.ReadOnly = true;
+            // 
+            // fname
+            // 
+            this.fname.HeaderText = "First Name";
+            this.fname.Name = "fname";
+            this.fname.ReadOnly = true;
+            this.fname.Width = 96;
+            // 
+            // lname
+            // 
+            this.lname.HeaderText = "Last Name";
+            this.lname.Name = "lname";
+            this.lname.ReadOnly = true;
+            this.lname.Width = 95;
+            // 
+            // dob
+            // 
+            this.dob.HeaderText = "Date of Birth";
+            this.dob.Name = "dob";
+            this.dob.ReadOnly = true;
+            this.dob.Width = 107;
+            // 
+            // ssn
+            // 
+            this.ssn.HeaderText = "Social Security #";
+            this.ssn.Name = "ssn";
+            this.ssn.ReadOnly = true;
+            this.ssn.Width = 116;
+            // 
+            // gender
+            // 
+            this.gender.HeaderText = "Gender";
+            this.gender.Name = "gender";
+            this.gender.ReadOnly = true;
+            this.gender.Width = 81;
+            // 
+            // mstat
+            // 
+            this.mstat.HeaderText = "Marital Status";
+            this.mstat.Name = "mstat";
+            this.mstat.ReadOnly = true;
+            this.mstat.Width = 114;
+            // 
+            // DateHired
+            // 
+            this.DateHired.HeaderText = "Date Hired";
+            this.DateHired.Name = "DateHired";
+            this.DateHired.ReadOnly = true;
+            this.DateHired.Width = 96;
+            // 
+            // Department
+            // 
+            this.Department.HeaderText = "Department";
+            this.Department.Name = "Department";
+            this.Department.ReadOnly = true;
+            this.Department.Width = 111;
+            // 
+            // GymMember
+            // 
+            this.GymMember.HeaderText = "GymMembership";
+            this.GymMember.Name = "GymMember";
+            this.GymMember.ReadOnly = true;
+            this.GymMember.Width = 144;
+            // 
+            // stFirstName
+            // 
+            this.stFirstName.HeaderText = "First Name";
+            this.stFirstName.Name = "stFirstName";
+            this.stFirstName.ReadOnly = true;
+            this.stFirstName.Width = 96;
+            // 
+            // stLastName
+            // 
+            this.stLastName.HeaderText = "Last Name";
+            this.stLastName.Name = "stLastName";
+            this.stLastName.ReadOnly = true;
+            this.stLastName.Width = 95;
+            // 
+            // stDOB
+            // 
+            this.stDOB.HeaderText = "Date of Birth";
+            this.stDOB.Name = "stDOB";
+            this.stDOB.ReadOnly = true;
+            this.stDOB.Width = 107;
+            // 
+            // stSSN
+            // 
+            this.stSSN.HeaderText = "Social Security #";
+            this.stSSN.Name = "stSSN";
+            this.stSSN.ReadOnly = true;
+            this.stSSN.Width = 116;
+            // 
+            // stGender
+            // 
+            this.stGender.HeaderText = "Gender";
+            this.stGender.Name = "stGender";
+            this.stGender.ReadOnly = true;
+            this.stGender.Width = 81;
+            // 
+            // stMaritalStatus
+            // 
+            this.stMaritalStatus.HeaderText = "Marital Status";
+            this.stMaritalStatus.Name = "stMaritalStatus";
+            this.stMaritalStatus.ReadOnly = true;
+            this.stMaritalStatus.Width = 114;
+            // 
+            // stCollege
+            // 
+            this.stCollege.HeaderText = "College";
+            this.stCollege.Name = "stCollege";
+            this.stCollege.ReadOnly = true;
+            this.stCollege.Width = 83;
+            // 
+            // stDateStarted
+            // 
+            this.stDateStarted.HeaderText = "Start Date";
+            this.stDateStarted.Name = "stDateStarted";
+            this.stDateStarted.ReadOnly = true;
+            this.stDateStarted.Width = 91;
+            // 
+            // stCollegeYear
+            // 
+            this.stCollegeYear.HeaderText = "College Year";
+            this.stCollegeYear.Name = "stCollegeYear";
+            this.stCollegeYear.ReadOnly = true;
+            this.stCollegeYear.Width = 105;
+            // 
+            // stAvgHours
+            // 
+            this.stAvgHours.HeaderText = "Average Hours";
+            this.stAvgHours.Name = "stAvgHours";
+            this.stAvgHours.ReadOnly = true;
+            this.stAvgHours.Width = 118;
+            // 
+            // stHasLoans
+            // 
+            this.stHasLoans.HeaderText = "Has Loans";
+            this.stHasLoans.Name = "stHasLoans";
+            this.stHasLoans.ReadOnly = true;
+            this.stHasLoans.Width = 93;
             // 
             // MainForm
             // 
@@ -532,27 +564,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn city;
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
         private System.Windows.Forms.DataGridViewTextBoxColumn zip;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ssn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dob;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mstat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateHired;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Department;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GymMember;
         private System.Windows.Forms.DataGridView StudentGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stFirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stLastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stSSN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stDOB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stGender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stMaritalStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stCollege;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stDateStarted;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stCollegeYear;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stAvgHours;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stHasLoans;
         private System.Windows.Forms.DataGridView AllGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
@@ -560,5 +572,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn aDOB;
         private System.Windows.Forms.DataGridViewTextBoxColumn aGender;
         private System.Windows.Forms.DataGridViewTextBoxColumn aMaritalStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dob;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ssn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mstat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateHired;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Department;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GymMember;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stFirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stLastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stDOB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stSSN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stGender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stMaritalStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stCollege;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stDateStarted;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stCollegeYear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stAvgHours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stHasLoans;
     }
 }

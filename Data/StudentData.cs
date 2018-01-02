@@ -32,6 +32,7 @@ namespace Data
         {
             return GetData("dbo.usp_MM_sel_stu").Tables[0];
         }
+       
         /// <summary>
         /// Store Parameters
         /// </summary>

@@ -36,6 +36,7 @@ namespace MiltonTrainingProject
         }
         public static void AddEmployeeToGrid(this DataGridView g, Employee e)
         {
+
             g.Rows[g.Rows.Add(e.LastName
                                 , e.FirstName
                                 , e.DOB.ToShortDateString()
@@ -173,11 +174,23 @@ namespace MiltonTrainingProject
             s.College = (College)row.Cells[6].Value;
             s.AvgHours = (int)row.Cells[7].Value;
             s.College_year = row.Cells[8].Value.ToString().GetEnumFromString<CollegeYear>();
-            s.Date_start = Convert.ToDateTime(row.Cells[9].Value);
-            //MessageBox.Show((row.Cells[10].Value.ToString() == "Yes"? true:false).ToString());
+            s.Date_start = Convert.ToDateTime(row.Cells[9].Value);            
             s.HasLoans = row.Cells[10].Value.ToString() == "Yes" ? true : false;
             return s;
         }
+        public static College GetCollegeFromGrid(this DataGridViewRow row)
+        {
+            College c = new College();
+            c.ID = (int)row.Tag;
+            c.Name = row.Cells[0].Value.ToString();
+            c.Street = row.Cells[1].Value.ToString();
+            c.City = row.Cells[2].Value.ToString();
+            c.Zip = (int)row.Cells[4].Value;
+            c.State = row.Cells[3].Value.ToString().GetEnumFromString<State>();
+
+            return c;
+        }
+        
 
     }
 }

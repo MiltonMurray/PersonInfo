@@ -19,12 +19,35 @@ namespace MiltonTrainingProject
         public bool IsChanged { get; set; }
         private MainForm mform;
        
-        public CollegeForm(MainForm form)
+        public CollegeForm(MainForm form, College c = null)
         {      
             InitializeComponent();
             mform = form;
+            College = c;
         }
+        private bool Collect()
+        {
+            if (!IsEdit)
+            {
+                College = new College();
+            }
+            try
+            {
 
+                College.Name = txtCName.Text;
+                College.City = txtCity.Text;
+                College.Street = txtStreet.Text;
+                College.State = cbState.Text.GetEnumFromString<State>();
+                College.Zip = int.Parse(txtZip.Text);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
         private void CollegeForm_Load(object sender, EventArgs e)
         {
             string[] n = Enum.GetNames(typeof(State));
@@ -44,12 +67,13 @@ namespace MiltonTrainingProject
         private void addCollegebtn_Click(object sender, EventArgs e)
         {
             CollegeService serv = new CollegeService();
-            if (collect())
+            if (Collect())
             {
                 if (IsEdit)
                 {
                     serv.Update(College);
                     MessageBox.Show("Record updated successfully.");
+                    mform.refresh();
                     Close();
                 }
                 else
@@ -61,32 +85,16 @@ namespace MiltonTrainingProject
                 }                
             }
         }
-        public bool collect()
-        {
-            if (!IsEdit)
-            {
-                College = new College();
-            }
-            try
-            {
-                College.Name = txtCName.Text;
-                College.Street = txtStreet.Text;
-                College.City = txtCity.Text;
-                College.State = cbState.Text.GetEnumFromString<State>();
-                College.Zip = int.Parse(txtZip.Text);
-                return true;
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;               
-            }
-        }
+        
 
         private void CollegeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

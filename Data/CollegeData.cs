@@ -22,14 +22,18 @@ namespace Data
         }
         public void Update(College c)
         {
-            ExecuteProc("dbo.usp_MM_Update", CollegeCo(c));
+            ExecuteProc("dbo.usp_MM_Upd_Col", CollegeCo(c));
         }
+       
         public void Delete(int id)
         {
             List<SqlParameter> paramList = new List<SqlParameter>();
             paramList.Add(new SqlParameter("@ID", SqlDbType.Int) { Value = id });
-            ExecuteProc("dbo.usp_MM_Delete", paramList);
+            
+            ExecuteProc("dbo.usp_MM_Del_Col", paramList);
         }
+
+        
         public List<SqlParameter> CollegeCo(College c)
         {
             List<SqlParameter> paramList = new List<SqlParameter>();          

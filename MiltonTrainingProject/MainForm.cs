@@ -16,45 +16,58 @@ namespace MiltonTrainingProject
     public partial class MainForm : Form
     {
         DataGridView currentGrid;
-       
+
         public DataGridView getGrid { get { return currentGrid; } }
 
         public MainForm()
         {
             InitializeComponent();
         }
-        
+
         private void MainForm_Load(object sender, EventArgs e)
         {
-           
-                EmployeeGrid.AddEmployeeToGrid(new EmployeeService().SelectAll());
-                AllGrid.AddPersonToGrid(new Services().SelectAll());
-                StudentGrid.AddStudentToGrid(new StudentService().SelectAll());
-                CollegeGrid.AddCollegeToGrid(new CollegeService().SelectAll());
-                currentGrid = StudentGrid;
-                gridEditLink();
-                gridDeleteLink();
-                currentGrid = EmployeeGrid;
-                gridEditLink();
-                gridDeleteLink();
-        
-            
+            AllGrid.AddPersonToGrid(new Services().SelectAll());
+            EmployeeGrid.AddEmployeeToGrid(new EmployeeService().SelectAll());           
+            StudentGrid.AddStudentToGrid(new StudentService().SelectAll());
+            CollegeGrid.AddCollegeToGrid(new CollegeService().SelectAll());
+            AddLinks();
 
         }
+
+        private void AddLinks()
+        {
+            currentGrid = CollegeGrid;
+            gridEditLink();
+            gridDeleteLink();
+            currentGrid = StudentGrid;
+            gridEditLink();
+            gridDeleteLink();
+            currentGrid = EmployeeGrid;
+            gridEditLink();
+            gridDeleteLink();
+        }
+
         public void refresh()
-        {            
+        {
             currentGrid.Rows.Clear();
+
             if (currentGrid == EmployeeGrid)
             {
                 currentGrid.AddEmployeeToGrid(new EmployeeService().SelectAll());
             }
-            else if(currentGrid == StudentGrid)
+            else if (currentGrid == StudentGrid)
             {
                 currentGrid.AddStudentToGrid(new StudentService().SelectAll());
             }
-            
+            else
+            {
+                currentGrid.AddCollegeToGrid(new CollegeService().SelectAll());
+                StudentGrid.Rows.Clear();
+                StudentGrid.AddStudentToGrid(new StudentService().SelectAll());
+            }
+
         }
-       
+
         private void gridEditLink()
         {
             var editLink = new DataGridViewLinkColumn
@@ -77,24 +90,24 @@ namespace MiltonTrainingProject
                 UseColumnTextForLinkValue = true
             };
 
-            this.currentGrid.Columns.Add(deleteLink);       
+            this.currentGrid.Columns.Add(deleteLink);
         }
-       
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            int id =Int32.Parse(currentGrid.Rows[e.RowIndex].Tag.ToString());
+
+            int id = Int32.Parse(currentGrid.Rows[e.RowIndex].Tag.ToString());
             string curr = currentGrid.CurrentCell.Value.ToString();
-            
+
             if (curr == "Delete")
             {
                 try
                 {
-                        Employee emp = new Employee();
-                        EmployeeService data = new EmployeeService();
-                        data.Delete(emp,id);
-                   
+                    Employee emp = new Employee();
+                    EmployeeService serv = new EmployeeService();
+                    serv.Delete(emp, id);
+
                     this.refresh();
                 }
                 catch (Exception ex)
@@ -104,15 +117,11 @@ namespace MiltonTrainingProject
             }
             if (curr == "Edit")
             {
-               
-              
-                    EmployeeForm emp = new EmployeeForm(this,EmployeeGrid.Rows[e.RowIndex].GetEmployeeFromGrid());
-                    emp.IsEdit = true;
-                    emp.ShowDialog();
-                    
-                
-               
-                                                      
+
+                EmployeeForm emp = new EmployeeForm(this, EmployeeGrid.Rows[e.RowIndex].GetEmployeeFromGrid());
+                emp.IsEdit = true;
+                emp.ShowDialog();
+
             }
 
         }
@@ -125,11 +134,10 @@ namespace MiltonTrainingProject
             {
                 try
                 {
-                    
-                        Student stu = new Student();
-                        StudentService data = new StudentService();
-                        data.Delete(stu, id);
-                   
+                    Student stu = new Student();
+                    StudentService serv = new StudentService();
+                    serv.Delete(stu, id);
+
                     this.refresh();
                 }
 
@@ -140,15 +148,46 @@ namespace MiltonTrainingProject
             }
             if (curr == "Edit")
             {
-               
-                    StudentForm std = new StudentForm(this, StudentGrid.Rows[e.RowIndex].GetStudentFromGrid());
-                    std.IsEdit = true;
-                    std.ShowDialog();
-               
+
+                StudentForm std = new StudentForm(this, StudentGrid.Rows[e.RowIndex].GetStudentFromGrid());
+                std.IsEdit = true;
+                std.ShowDialog();
+
 
             }
         }
+        private void CollegeGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = Int32.Parse(currentGrid.Rows[e.RowIndex].Tag.ToString());
+            string name = currentGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string curr = currentGrid.CurrentCell.Value.ToString();
 
+            if (curr == "Delete")
+            {
+                try
+                {
+                    College c = new College();
+                    CollegeService data = new CollegeService();
+                    data.Delete(id);
+
+                    this.refresh();
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            if (curr == "Edit")
+            {
+
+                CollegeForm cc = new CollegeForm(this, CollegeGrid.Rows[e.RowIndex].GetCollegeFromGrid());
+                cc.IsEdit = true;
+                cc.ShowDialog();
+
+
+            }
+        }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -190,16 +229,16 @@ namespace MiltonTrainingProject
         private void employeeToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             HideGrids();
+            currentGrid = EmployeeGrid;
             EmployeeGrid.Show();
-            
+
         }
 
         private void collegeHelpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //HideGrids();
+            HideGrids();
             currentGrid = StudentGrid;
             StudentGrid.Show();
-        
 
         }
         private void employeeToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -209,6 +248,9 @@ namespace MiltonTrainingProject
             currentGrid = AllGrid;
         }
 
-       
+        private void AllGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
