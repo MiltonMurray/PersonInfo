@@ -1,4 +1,4 @@
-# Employee/Sudent Directory
+# Employee/Student Directory
 
 ## .Net Training Project
 
