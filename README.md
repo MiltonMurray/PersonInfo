@@ -1,4 +1,4 @@
-# PersonInfo
+# Employee/Sudent Directory
 
 ## .Net Training Project
 
